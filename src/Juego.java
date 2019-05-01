@@ -21,12 +21,9 @@ public class Juego extends Canvas implements Runnable{
 		
 		r = new Random();
 		
-		handler.addObject(new Jugador(ANCHO/2 - 40,ALTO/2 - 60,ID.Jugador));
-		
-		
 		//Agregar los objetos al juego
-		//handler.addObject(new Jugador(100,100,ID.Jugador));
-		
+		handler.addObject(new Jugador(ANCHO/2 - 40,ALTO/2 - 60,ID.Jugador));
+		handler.addObject(new SlowCar(ANCHO/2 - 40,ALTO/2 - 60,ID.SlowCar));
 	}
 	
 	public synchronized void start() {
@@ -98,6 +95,16 @@ public class Juego extends Canvas implements Runnable{
 		
 		g.dispose();
 		bs.show();
+	}
+	
+	//Metodo para poder mantener un objeto dentro de un espacio
+	public static float clamp(float var, float min, float max) {
+		if(var >= max)
+			return var = max;
+		else if(var <= min)
+			return var = min;
+		else 
+			return var;
 	}
 	
 	public static void main(String[] args) {

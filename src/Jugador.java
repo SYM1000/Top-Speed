@@ -14,7 +14,7 @@ public class Jugador extends GameObject implements ImageObserver{
 
 	public Jugador(int x, int y, ID id) {
 		super(x, y, id);	
-		this.carro = new ImageIcon("carro.jpg").getImage();
+		this.carro = new ImageIcon("carro4.png").getImage();
 		
 		
 	}
@@ -23,13 +23,16 @@ public class Jugador extends GameObject implements ImageObserver{
 		x += velX;
 		y += velY;
 		
+		x = (int) Juego.clamp(x, 0, Juego.ANCHO - 50); //Ajustar el jugador en x
+		y = (int) Juego.clamp(y, 0, Juego.ALTO - 100);
+		
 	}
 
 	public void render(Graphics g) {
 		//Dibujar la imagen del objeto (carrito)
 		g.setColor(Color.white);
 		//g.fillRect(x,y,32,32);
-		g.drawImage(this.carro, x, y, 40, 60, this);
+		g.drawImage(this.carro, x, y, 60, 90, this);
 		
 	}
 

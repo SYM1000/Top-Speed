@@ -2,5 +2,5 @@
 
 public enum ID {
 	Jugador(),
-	Enemigo();
+	SlowCar();
 }
