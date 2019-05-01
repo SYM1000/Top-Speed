@@ -27,6 +27,10 @@ public class KeyInput extends KeyAdapter{
 			}
 		}
 		
+		if(key == KeyEvent.VK_ESCAPE) {
+			//salir del juego al presionar tecla escape
+			System.exit(1);
+		}
 	}
 	
 	public void keyReleased(KeyEvent e) {

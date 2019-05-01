@@ -12,12 +12,14 @@ public class Juego extends Canvas implements Runnable{
 	private boolean corriendo = false;
 	private Random r;
 	private Handler handler;
+	private HUD hud;
 	
 	
 	public Juego() {
 		this.handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
 		new Ventana(ANCHO, ALTO, "Top Speed", this);
+		hud = new HUD();
 		
 		r = new Random();
 		
@@ -44,6 +46,7 @@ public class Juego extends Canvas implements Runnable{
 	
 	public void run() {
 		//Game Loop
+		this.requestFocus(); //Para no hacer click en la pantalla y hacer mas fluido el movimiento 
 		long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1000000000 / amountOfTicks;
@@ -73,7 +76,8 @@ public class Juego extends Canvas implements Runnable{
 	}
 	
 	private void tick() {
-		handler.tick();
+		handler.tick();		
+		hud.tick();
 		
 	}
 	
@@ -88,11 +92,11 @@ public class Juego extends Canvas implements Runnable{
 		Graphics g = bs.getDrawGraphics();
 		
 		//Para el fondo del juego
-		g.setColor(Color.green);
+		g.setColor(Color.white);
 		g.fillRect(0, 0, ANCHO, ALTO);
 		
 		handler.render(g);
-		
+		hud.render(g);
 		g.dispose();
 		bs.show();
 	}
