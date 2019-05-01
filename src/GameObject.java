@@ -1,4 +1,5 @@
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 //El gameobjecto es a lo que nos referimos cuando queremos hacer operaciones en cualquier objecto del juego.
 //Todos los objectos del juego son GameObjects
@@ -19,6 +20,7 @@ public abstract class GameObject {
 	
 	public abstract void tick();
 	public abstract void render(Graphics g);
+	public abstract Rectangle getBounds(); //si dos rectangulos intersectan,  regresa true
 	
 	public void setX(int x) {
 		this.x = x;

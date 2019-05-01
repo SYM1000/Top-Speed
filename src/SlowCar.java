@@ -1,6 +1,8 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.image.ImageObserver;
 
 import javax.swing.ImageIcon;
@@ -8,14 +10,23 @@ import javax.swing.ImageIcon;
 public class SlowCar extends GameObject implements ImageObserver{
 	//Atributos
 	private Image police;
+	private int ancho;
+	private int alto;
 	
 	//Contructor
 	public SlowCar(int x, int y, ID id) {
 		super(x, y, id);
-		this.police = new ImageIcon("police.jpg").getImage();
+		this.police = new ImageIcon("Sprites/police.jpg").getImage();
+		this.ancho = 40;
+		this.alto = 60;
 		
 		velX = 0;
 		velY = 2;
+		
+	}
+	
+	public Rectangle getBounds(){
+		return new Rectangle(x,y,this.ancho,this.alto);
 	}
 
 	//Metodos
@@ -29,7 +40,7 @@ public class SlowCar extends GameObject implements ImageObserver{
 
 	public void render(Graphics g) {
 		g.setColor(Color.red);
-		g.drawImage(this.police, x, y, 40, 60, this);
+		g.drawImage(this.police, x, y, this.ancho, this.alto, this);
 	}
 
 	

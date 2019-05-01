@@ -5,9 +5,7 @@ public class HUD {
 	
 	public static int SALUD = 100;
 
-	public void tick() {
-		SALUD--;
-		
+	public void tick() {		
 		SALUD = (int) Juego.clamp(SALUD, 0, 100);
 	}
 	

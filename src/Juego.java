@@ -1,8 +1,11 @@
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
+
+import javax.swing.ImageIcon;
 
 public class Juego extends Canvas implements Runnable{
 
@@ -13,6 +16,7 @@ public class Juego extends Canvas implements Runnable{
 	private Random r;
 	private Handler handler;
 	private HUD hud;
+	private Image calle;
 	
 	
 	public Juego() {
@@ -20,12 +24,12 @@ public class Juego extends Canvas implements Runnable{
 		this.addKeyListener(new KeyInput(handler));
 		new Ventana(ANCHO, ALTO, "Top Speed", this);
 		hud = new HUD();
-		
+		this.calle = new ImageIcon("Sprites/Calle2.png").getImage();
 		r = new Random();
 		
 		//Agregar los objetos al juego
-		handler.addObject(new Jugador(ANCHO/2 - 40,ALTO/2 - 60,ID.Jugador));
-		handler.addObject(new SlowCar(ANCHO/2 - 40,ALTO/2 - 60,ID.SlowCar));
+		handler.addObject(new Jugador(ANCHO/2 - 40, ALTO - 120, ID.Jugador, handler));
+		handler.addObject(new SlowCar(ANCHO/2 - 40, 0 + 50, ID.SlowCar));
 	}
 	
 	public synchronized void start() {
@@ -94,6 +98,7 @@ public class Juego extends Canvas implements Runnable{
 		//Para el fondo del juego
 		g.setColor(Color.white);
 		g.fillRect(0, 0, ANCHO, ALTO);
+		g.drawImage(this.calle, 0, 0, this.ANCHO, this.ALTO, this);
 		
 		handler.render(g);
 		hud.render(g);
