@@ -44,7 +44,7 @@ public class Jugador extends GameObject implements ImageObserver{
 		for(int i = 0; i< handler.objeto.size();i++) {
 			GameObject tempObject = handler.objeto.get(i);
 			
-			if(tempObject.getId() == ID.SlowCar) {
+			if(tempObject.getId() == ID.SlowCar) { //El objeto temporal es el carro lento
 				if(getBounds().intersects(tempObject.getBounds())) {
 					//Lo que ocurre si coliciona con el carro lento
 					HUD.SALUD -= 1;

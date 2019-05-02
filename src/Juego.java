@@ -1,7 +1,9 @@
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Image;
+import java.awt.RenderingHints;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 
@@ -18,6 +20,12 @@ public class Juego extends Canvas implements Runnable{
 	private HUD hud;
 	private Image calle;
 	
+	private int crx;
+	private int cry;
+	private boolean game_over;
+	private int count;
+	private int c;
+	
 	
 	public Juego() {
 		this.handler = new Handler();
@@ -29,7 +37,8 @@ public class Juego extends Canvas implements Runnable{
 		
 		//Agregar los objetos al juego
 		handler.addObject(new Jugador(ANCHO/2 - 40, ALTO - 120, ID.Jugador, handler));
-		handler.addObject(new SlowCar(ANCHO/2 - 40, 0 + 50, ID.SlowCar));
+		handler.addObject(new SlowCar(ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
+		
 	}
 	
 	public synchronized void start() {
@@ -50,7 +59,7 @@ public class Juego extends Canvas implements Runnable{
 	
 	public void run() {
 		//Game Loop
-		this.requestFocus(); //Para no hacer click en la pantalla y hacer mas fluido el movimiento 
+		this.requestFocus(); //Para no hacer click en la pantalla 
 		long lastTime = System.nanoTime();
         double amountOfTicks = 60.0;
         double ns = 1000000000 / amountOfTicks;
@@ -71,7 +80,7 @@ public class Juego extends Canvas implements Runnable{
                             
         	if(System.currentTimeMillis() - timer > 1000){
         		timer += 1000;
-        		System.out.println("FPS: "+ frames);
+        		//System.out.println("FPS: "+ frames);
         		frames = 0;
         	}
         }
@@ -93,18 +102,18 @@ public class Juego extends Canvas implements Runnable{
 			return;
 		}
 		
-		Graphics g = bs.getDrawGraphics();
+		Graphics g = bs.getDrawGraphics();	
 		
 		//Para el fondo del juego
 		g.setColor(Color.white);
 		g.fillRect(0, 0, ANCHO, ALTO);
 		g.drawImage(this.calle, 0, 0, this.ANCHO, this.ALTO, this);
-		
+ 
 		handler.render(g);
 		hud.render(g);
 		g.dispose();
 		bs.show();
-	}
+	}	
 	
 	//Metodo para poder mantener un objeto dentro de un espacio
 	public static float clamp(float var, float min, float max) {
