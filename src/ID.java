@@ -3,5 +3,7 @@
 public enum ID {
 	Jugador(),
 	SlowCar(),
-	FastCar();
+	FastCar(),
+	SmartCar(),
+	HeavyCar();
 }

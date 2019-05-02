@@ -3,7 +3,7 @@ import java.awt.Graphics;
 
 public class HUD {
 	
-	public static int SALUD;
+	public static float SALUD;
 	private int valorVerde;
 	private int distancia; //Distancia recorrida
 	private int nivel;
@@ -20,7 +20,7 @@ public class HUD {
 		SALUD = (int) Juego.clamp(SALUD, 0, 100);
 		
 		this.valorVerde = (int) Juego.clamp(this.valorVerde, 0, 255);	
-		this.valorVerde = this.SALUD * 2;
+		this.valorVerde = (int) (this.SALUD * 2);
 		
 		
 		this.distancia ++;
@@ -30,7 +30,7 @@ public class HUD {
 		g.setColor(Color.white);
 		g.fillRect(Juego.ANCHO - 215,15, 200, 32);
 		g.setColor(new Color(100, this.valorVerde, 0));
-		g.fillRect(Juego.ANCHO - 215,15, SALUD * 2, 32);
+		g.fillRect(Juego.ANCHO - 215,15, (int) (SALUD * 2), 32);
 		g.setColor(Color.black);
 		g.drawRect(Juego.ANCHO - 215,15, 200, 32);
 		

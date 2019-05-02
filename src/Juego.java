@@ -40,7 +40,8 @@ public class Juego extends Canvas implements Runnable{
 		//Agregar los objetos al juego
 		handler.addObject(new Jugador(ANCHO/2 - 40, ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario
 		//handler.addObject(new SlowCar(ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
-		handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) /* - el ancho del enemigo*/) + 1), 10, ID.SlowCar, handler));
+		//handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), 10, ID.SlowCar, handler));
+		//handler.addObject(new HeavyCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -80) + 1), -200, ID.HeavyCar, handler));
 	}
 	
 	public synchronized void start() {
@@ -82,7 +83,7 @@ public class Juego extends Canvas implements Runnable{
                             
         	if(System.currentTimeMillis() - timer > 1000){
         		timer += 1000;
-        		//System.out.println("FPS: "+ frames);
+        		System.out.println("FPS: "+ frames);
         		frames = 0;
         	}
         }

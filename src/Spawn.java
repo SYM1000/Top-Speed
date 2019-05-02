@@ -16,25 +16,27 @@ public class Spawn {
 	public void tick() {
 		this.puntuacion ++;
 		
-		if(this.puntuacion >= 250) { //Cada vez que se complete se suma un nivel
+		if(this.puntuacion >= 100) { //Cada vez que se complete se suma un nivel
 			puntuacion = 0;
 			hud.setNivel(hud.getNivel() + 1); //Incrementar el nivel en 1 cada ves que se llegue a 1km
 			
+			
 			if(hud.getNivel() == 1) {
-					handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) /* - el ancho del enemigo*/) + 1), 10, ID.SlowCar, handler));
+				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), 10, ID.SlowCar, handler));			
 			}else if(hud.getNivel() == 2) {
-				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) /* - el ancho del enemigo*/) + 1), 10, ID.SlowCar, handler));
-				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) /* - el ancho del enemigo*/) + 1), 10, ID.SlowCar, handler));
+				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), 10, ID.SlowCar, handler));
+				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), 10, ID.SlowCar, handler));
 			}else if(hud.getNivel() == 3) {
-				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) /* - el ancho del enemigo*/) + 1), 10, ID.SlowCar, handler));
-				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) /* - el ancho del enemigo*/) + 1), 10, ID.SlowCar, handler));
-				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) /* - el ancho del enemigo*/) + 1), 10, ID.SlowCar, handler));
+				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -35) + 1), 10, ID.SlowCar, handler));
+				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -35) + 1), 10, ID.SlowCar, handler));
+				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -35) + 1), 10, ID.SlowCar, handler));
 			}else if(hud.getNivel() == 4) {
-				handler.addObject(new FastCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) /* - el ancho del enemigo*/) + 1), 10, ID.FastCar, handler));
+				handler.addObject(new FastCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), 10, ID.FastCar, handler));
+			}else if(hud.getNivel() == 5) {
+				handler.addObject(new SmartCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -30 ) + 1), 10, ID.SmartCar, handler));
+			}else if(hud.getNivel() == 6) {
+				handler.addObject(new HeavyCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -80) + 1), -200, ID.HeavyCar, handler));
 			}
-			
-			
-			
 			
 		}
 		

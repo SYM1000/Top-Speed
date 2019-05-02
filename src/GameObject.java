@@ -7,12 +7,12 @@ import java.awt.Rectangle;
 public abstract class GameObject {
 
 	//Atributos
-	protected int x, y; //Posicion del objeto
+	protected float x, y; //Posicion del objeto
 	protected ID id; //Identificador del Objeto
-	protected int velX, velY; //Velocidad del Objeto
+	protected float velX, velY; //Velocidad del Objeto
 	
 	//Metodos
-	public GameObject(int x, int y, ID id) {
+	public GameObject(float x, float y, ID id) {
 		this.x = x;
 		this.y = y;
 		this.id = id;
@@ -30,11 +30,11 @@ public abstract class GameObject {
 		this.y = y;
 	}
 	
-	public int getX() {
+	public float getX() {
 		return this.x;
 	}
 	
-	public int getY() {
+	public float getY() {
 		return this.y;
 	}
 	
@@ -54,11 +54,11 @@ public abstract class GameObject {
 		this.velY = velY;
 	}
 	
-	public int getVelX() {
+	public float getVelX() {
 		return this.velX;
 	}
 	
-	public int getVelY() {
+	public float getVelY() {
 		return this.velY;
 	}
 	

@@ -26,7 +26,7 @@ public class Jugador extends GameObject implements ImageObserver{
 	}
 
 	public Rectangle getBounds(){
-		return new Rectangle(x,y,this.ancho,this.alto);
+		return new Rectangle((int)x,(int)y,this.ancho,this.alto);
 	}
 	
 	public void tick() {
@@ -44,11 +44,18 @@ public class Jugador extends GameObject implements ImageObserver{
 		for(int i = 0; i< handler.objeto.size();i++) {
 			GameObject tempObject = handler.objeto.get(i);
 			
-			if(tempObject.getId() == ID.SlowCar || tempObject.getId() == ID.FastCar ) { //El objeto temporal es el carro lento
+			if(tempObject.getId() == ID.SlowCar || tempObject.getId() == ID.FastCar || tempObject.getId() == ID.SmartCar || tempObject.getId() == ID.HeavyCar) { //El objeto temporal es el carro lento
 				if(getBounds().intersects(tempObject.getBounds())) {
 					//Lo que ocurre si coliciona con el carro lento
-					if (tempObject.getId() == ID.SlowCar) HUD.SALUD -= 1;
-					else if (tempObject.getId() == ID.FastCar) HUD.SALUD -= 3;
+					if (tempObject.getId() == ID.SlowCar) {
+						HUD.SALUD -= 1;			
+					}else if (tempObject.getId() == ID.FastCar) {
+						HUD.SALUD -= 3;
+					}else if (tempObject.getId() == ID.SmartCar) {
+						HUD.SALUD -= 2;
+					}else if (tempObject.getId() == ID.HeavyCar) {
+						HUD.SALUD -= 15;
+					}
 				}
 			}
 
@@ -66,7 +73,7 @@ public class Jugador extends GameObject implements ImageObserver{
 		*/
 		
 		//Dibujar la imagen del objeto (carrito)
-		g.drawImage(this.carro, x, y, this.ancho, this.alto, this);
+		g.drawImage(this.carro, (int)x, (int)y, this.ancho, this.alto, this);
 		
 	}
 
