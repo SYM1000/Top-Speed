@@ -44,10 +44,11 @@ public class Jugador extends GameObject implements ImageObserver{
 		for(int i = 0; i< handler.objeto.size();i++) {
 			GameObject tempObject = handler.objeto.get(i);
 			
-			if(tempObject.getId() == ID.SlowCar) { //El objeto temporal es el carro lento
+			if(tempObject.getId() == ID.SlowCar || tempObject.getId() == ID.FastCar ) { //El objeto temporal es el carro lento
 				if(getBounds().intersects(tempObject.getBounds())) {
 					//Lo que ocurre si coliciona con el carro lento
-					HUD.SALUD -= 1;
+					if (tempObject.getId() == ID.SlowCar) HUD.SALUD -= 1;
+					else if (tempObject.getId() == ID.FastCar) HUD.SALUD -= 3;
 				}
 			}
 
@@ -57,6 +58,7 @@ public class Jugador extends GameObject implements ImageObserver{
 	public void render(Graphics g) {
 		
 		Graphics2D g2d = (Graphics2D) g;
+		
 		/*
 		 * Vizualizar la caja con la que hace contacto 
 		g.setColor(Color.green);

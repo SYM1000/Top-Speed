@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.ImageIcon;
 
@@ -19,26 +20,27 @@ public class Juego extends Canvas implements Runnable{
 	private Handler handler;
 	private HUD hud;
 	private Image calle;
+	private Spawn spawner;
 	
-	private int crx;
-	private int cry;
-	private boolean game_over;
-	private int count;
-	private int c;
-	
+	private ThreadLocalRandom randomNum; //Para probar
 	
 	public Juego() {
 		this.handler = new Handler();
 		this.addKeyListener(new KeyInput(handler));
 		new Ventana(ANCHO, ALTO, "Top Speed", this);
-		hud = new HUD();
+		this.hud = new HUD();
+		this.hilo = new Thread(this);
+		this.spawner =  new Spawn(handler, hud);
+		
 		this.calle = new ImageIcon("Sprites/Calle2.png").getImage();
 		r = new Random();
 		
-		//Agregar los objetos al juego
-		handler.addObject(new Jugador(ANCHO/2 - 40, ALTO - 120, ID.Jugador, handler));
-		handler.addObject(new SlowCar(ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
+		this.randomNum = ThreadLocalRandom.current(); //Para probar
 		
+		//Agregar los objetos al juego
+		handler.addObject(new Jugador(ANCHO/2 - 40, ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario
+		//handler.addObject(new SlowCar(ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
+		handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) /* - el ancho del enemigo*/) + 1), 10, ID.SlowCar, handler));
 	}
 	
 	public synchronized void start() {
@@ -91,6 +93,7 @@ public class Juego extends Canvas implements Runnable{
 	private void tick() {
 		handler.tick();		
 		hud.tick();
+		spawner.tick();
 		
 	}
 	
