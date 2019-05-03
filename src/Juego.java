@@ -46,8 +46,8 @@ public class Juego extends Canvas implements Runnable{
 		this.hilo = new Thread(this);
 		this.spawner =  new Spawn(handler, hud);
 		this.calle = new ImageIcon("Sprites/Calle2.png").getImage();
-		//this.fondo = new ImageIcon("fondo4.gif").getImage();
-		this.fondo = new ImageIcon("fondo.jpeg").getImage();
+		this.fondo = new ImageIcon("fondo4.gif").getImage();
+		//this.fondo = new ImageIcon("fondo.jpeg").getImage();
 		
 		r = new Random();
 		this.randomNum = ThreadLocalRandom.current(); //Para probar

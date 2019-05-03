@@ -16,11 +16,13 @@ public class Menu extends MouseAdapter implements ImageObserver {
 	public Juego juego;
 	public Handler handler;
 	private Random r;
+	private Image logo;
 	
 	public Menu(Juego juego, Handler handler) {
 		this.juego = juego;
 		this.handler = handler;
 		this.r = new Random();
+		this.logo = new ImageIcon("logo.png").getImage();
 	}
 
 	public void mousePressed(MouseEvent e) {
@@ -43,16 +45,31 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			juego.estadoJuego = Juego.ESTADO.Ayuda;
 		}
 		
+		//Regresar en Ayuda
+		if(juego.estadoJuego == Juego.ESTADO.Ayuda) {
+			if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
+				juego.estadoJuego = Juego.ESTADO.Menu;
+				return;
+			}
+		}
+		
 		//Boton: CRÉDITOS
 		if(this.mouseOver(mx, my, 150, 325, 200, 55)){
 			juego.estadoJuego = Juego.ESTADO.Creditos;
+		}
+		
+		//Regresar en creditos
+		if(juego.estadoJuego == Juego.ESTADO.Creditos) {
+			if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
+				juego.estadoJuego = Juego.ESTADO.Menu;
+				return;
+			}
 		}
 		
 		//Boton: SALIR
 		if(this.mouseOver(mx, my, 150, 400, 200, 55)){
 			System.exit(1);
 		}
-				
 		
 	}
 	
@@ -85,7 +102,8 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			
 			g.setFont(fnt);
 			g.setColor(Color.white);
-			g.drawString("Top Speed", 125, 75);
+			//g.drawString("Top Speed", 125, 75);
+			g.drawImage(this.logo, 155, 20, 180, 150, this);
 			
 			g.setFont(fnt2);
 			g.setColor(Color.white);
@@ -112,6 +130,11 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			g.setColor(Color.white);
 			g.drawString("AYUDA", 160, 75);
 			
+			//Regresar
+			g.setFont(fnt2);
+			g.drawRect(150, 400, 200, 55);
+			g.drawString("Regresar", 185, 437);
+			
 		}else if (juego.estadoJuego == Juego.ESTADO.Creditos) {
 			Font fnt = new Font("arial", 1,50);
 			Font fnt2 = new Font("arial", 1,30);
@@ -119,6 +142,11 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			g.setFont(fnt);
 			g.setColor(Color.white);
 			g.drawString("CRÉDITOS", 115, 75);
+			
+			//Regresar
+			g.setFont(fnt2);
+			g.drawRect(150, 400, 200, 55);
+			g.drawString("Regresar", 185, 437);
 		}
 		
 	}
