@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Spawn {
@@ -6,10 +7,12 @@ public class Spawn {
 	private HUD hud;
 	private int puntuacion = 0;
 	private ThreadLocalRandom randomNum;
+	private Random r;
 	
 	public Spawn(Handler handler, HUD hud) {
 		this.handler = handler;
 		this.hud = hud;
+		r = new Random();
 		this.randomNum = ThreadLocalRandom.current();
 	}
 	
@@ -20,7 +23,9 @@ public class Spawn {
 			puntuacion = 0;
 			hud.setNivel(hud.getNivel() + 1); //Incrementar el nivel en 1 cada ves que se llegue a 1km
 			
-			
+			int inicio = this.r.nextInt(((Juego.ANCHO - 140) - 120) + 1) + 120;
+	
+					
 			if(hud.getNivel() == 1) {
 				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), 10, ID.SlowCar, handler));			
 			}else if(hud.getNivel() == 2) {
@@ -38,6 +43,8 @@ public class Spawn {
 				handler.addObject(new HeavyCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -80) + 1), -200, ID.HeavyCar, handler));
 			}
 			
+			//Metodo para eliminar todos los objetos del juego
+			//handler.clearCars();
 		}
 		
 	}

@@ -24,6 +24,17 @@ public class Handler {
 		}
 	}
 	
+	public void clearCars() {
+		for(int i = 0; i < objeto.size(); i++ ) {
+			GameObject tempObject = objeto.get(i);
+			
+			if(tempObject.getId() == ID.Jugador) {
+				objeto.clear();
+				addObject(new Jugador((int)tempObject.getVelX(), (int)tempObject.getY(), ID.Jugador, this));
+			}
+		}
+	}
+	
 	public void addObject(GameObject objeto) {
 		this.objeto.add(objeto);
 	}
@@ -31,5 +42,6 @@ public class Handler {
 	public void removeObject(GameObject objeto) {
 		this.objeto.remove(objeto);
 	}
+	
 }
 

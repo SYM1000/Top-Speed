@@ -20,28 +20,47 @@ public class Juego extends Canvas implements Runnable{
 	private Handler handler;
 	private HUD hud;
 	private Image calle;
-	private Spawn spawner;
-	
+	private Spawn spawner;	
+	private Menu menu;
 	private ThreadLocalRandom randomNum; //Para probar
+	private Image fondo;
+	
+	public enum ESTADO{
+		Menu,
+		Juego,
+		Ayuda,
+		Creditos,
+		
+	};
+	
+	//El estado en el que inicia el juego por default
+	public ESTADO estadoJuego = ESTADO.Menu;
 	
 	public Juego() {
 		this.handler = new Handler();
+		this.menu = new Menu(this, handler);
 		this.addKeyListener(new KeyInput(handler));
+		this.addMouseListener(menu);
 		new Ventana(ANCHO, ALTO, "Top Speed", this);
 		this.hud = new HUD();
 		this.hilo = new Thread(this);
 		this.spawner =  new Spawn(handler, hud);
-		
 		this.calle = new ImageIcon("Sprites/Calle2.png").getImage();
-		r = new Random();
+		//this.fondo = new ImageIcon("fondo4.gif").getImage();
+		this.fondo = new ImageIcon("fondo.jpeg").getImage();
 		
+		r = new Random();
 		this.randomNum = ThreadLocalRandom.current(); //Para probar
 		
-		//Agregar los objetos al juego
-		handler.addObject(new Jugador(ANCHO/2 - 40, ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario
-		//handler.addObject(new SlowCar(ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
-		//handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), 10, ID.SlowCar, handler));
-		//handler.addObject(new HeavyCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -80) + 1), -200, ID.HeavyCar, handler));
+		if(this.estadoJuego == ESTADO.Juego) {
+			/*
+			//Agregar los objetos al juego
+			handler.addObject(new Jugador(ANCHO/2 - 40, ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario
+			//handler.addObject(new SlowCar(ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
+			//handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), 10, ID.SlowCar, handler));
+			//handler.addObject(new HeavyCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -80) + 1), -200, ID.HeavyCar, handler));
+			*/
+		}
 	}
 	
 	public synchronized void start() {
@@ -83,7 +102,7 @@ public class Juego extends Canvas implements Runnable{
                             
         	if(System.currentTimeMillis() - timer > 1000){
         		timer += 1000;
-        		System.out.println("FPS: "+ frames);
+        		//System.out.println("FPS: "+ frames);
         		frames = 0;
         	}
         }
@@ -92,9 +111,13 @@ public class Juego extends Canvas implements Runnable{
 	}
 	
 	private void tick() {
-		handler.tick();		
-		hud.tick();
-		spawner.tick();
+		handler.tick();	
+		if(this.estadoJuego == ESTADO.Juego) {
+			hud.tick();
+			spawner.tick();
+		}else if(this.estadoJuego == ESTADO.Menu) {
+			menu.tick();
+		}
 		
 	}
 	
@@ -109,12 +132,26 @@ public class Juego extends Canvas implements Runnable{
 		Graphics g = bs.getDrawGraphics();	
 		
 		//Para el fondo del juego
-		g.setColor(Color.white);
-		g.fillRect(0, 0, ANCHO, ALTO);
-		g.drawImage(this.calle, 0, 0, this.ANCHO, this.ALTO, this);
- 
+		g.setColor(Color.gray);
+		//g.fillRect(0, 0, ANCHO, ALTO);
+		
+		if(this.estadoJuego == ESTADO.Juego) { //<-------------
+			g.drawImage(this.calle, 0, 0, this.ANCHO, this.ALTO, this);
+			
+		} /*else if (this.estadoJuego == ESTADO.Menu ) {
+			g.drawImage(this.fondo, 0, 0, Juego.ANCHO, Juego.ALTO, this);
+			
+		}*/
+
 		handler.render(g);
-		hud.render(g);
+		
+		if(this.estadoJuego == ESTADO.Juego) {			
+			hud.render(g);
+		}else if(estadoJuego == ESTADO.Menu || estadoJuego == ESTADO.Ayuda || estadoJuego == ESTADO.Creditos) {
+			g.drawImage(this.fondo, 0, 0, Juego.ANCHO, Juego.ALTO, this);
+			menu.render(g);
+			
+		}
 		g.dispose();
 		bs.show();
 	}	

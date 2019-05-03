@@ -39,10 +39,10 @@ public class HeavyCar extends GameObject implements ImageObserver{
 		x = (int) Juego.clamp(x, 120, (Juego.ANCHO - 140) - 35); //Ajustar el jugador en x
 		y = (int) Juego.clamp(y, -200, (Juego.ALTO + 200)- 94);
 		
-		/*
-		if(y <= -200 || y >= Juego.ALTO) velY *=-1;
-		if (x <= 0 || x >= Juego.ANCHO) velX *=-1;
-		*/
+		
+		//if(y <= -200 || y >= Juego.ALTO) velY *=-1;
+		//if (x <= 0 || x >= Juego.ANCHO - 80) velX *=-1;
+		
 		
 		// Eliminar el objeto cuando sale de la pantalla
 		if(y >= Juego.ANCHO) {
