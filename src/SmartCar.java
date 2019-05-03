@@ -18,7 +18,7 @@ public class SmartCar extends GameObject implements ImageObserver{
 	//Contructor
 	public SmartCar(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
-		this.smart = new ImageIcon("Sprites/smart_car.png").getImage();
+		this.smart = new ImageIcon("smart_car.png").getImage();
 		this.ancho = 30;
 		this.alto = 50;
 		this.handler = handler;

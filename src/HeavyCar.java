@@ -17,7 +17,7 @@ public class HeavyCar extends GameObject implements ImageObserver{
 	//Contructor
 	public HeavyCar(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
-		this.tanque = new ImageIcon("Sprites/tank.png").getImage();
+		this.tanque = new ImageIcon("tank.png").getImage();
 		this.ancho = 80;
 		this.alto = 120;
 		this.handler = handler;

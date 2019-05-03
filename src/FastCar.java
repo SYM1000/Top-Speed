@@ -17,7 +17,7 @@ public class FastCar extends GameObject implements ImageObserver{
 	//Contructor
 	public FastCar(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
-		this.police = new ImageIcon("Sprites/Police3.png").getImage();
+		this.police = new ImageIcon("Police3.png").getImage();
 		this.ancho = 38;
 		this.alto = 70;
 		this.handler = handler;

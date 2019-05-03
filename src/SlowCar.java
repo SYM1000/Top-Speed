@@ -17,7 +17,7 @@ public class SlowCar extends GameObject implements ImageObserver{
 	//Contructor
 	public SlowCar(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
-		this.police = new ImageIcon("Sprites/Police2.png").getImage();
+		this.police = new ImageIcon("Police2.png").getImage();
 		this.ancho = 35;
 		this.alto = 70;
 		this.handler = handler;

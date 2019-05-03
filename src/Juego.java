@@ -45,7 +45,7 @@ public class Juego extends Canvas implements Runnable{
 		this.hud = new HUD();
 		this.hilo = new Thread(this);
 		this.spawner =  new Spawn(handler, hud);
-		this.calle = new ImageIcon("Sprites/Calle2.png").getImage();
+		this.calle = new ImageIcon("Calle2.png").getImage();
 		this.fondo = new ImageIcon("fondo4.gif").getImage();
 		//this.fondo = new ImageIcon("fondo.jpeg").getImage();
 		
@@ -149,8 +149,7 @@ public class Juego extends Canvas implements Runnable{
 			hud.render(g);
 		}else if(estadoJuego == ESTADO.Menu || estadoJuego == ESTADO.Ayuda || estadoJuego == ESTADO.Creditos) {
 			g.drawImage(this.fondo, 0, 0, Juego.ANCHO, Juego.ALTO, this);
-			menu.render(g);
-			
+			menu.render(g);	
 		}
 		g.dispose();
 		bs.show();

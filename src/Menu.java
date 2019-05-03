@@ -7,6 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.ImageObserver;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -16,47 +17,59 @@ public class Menu extends MouseAdapter implements ImageObserver {
 	public Juego juego;
 	public Handler handler;
 	private Random r;
-	private Image logo;
+	private Image logo, teclas;
+	private ThreadLocalRandom randomNum;
 	
 	public Menu(Juego juego, Handler handler) {
 		this.juego = juego;
 		this.handler = handler;
 		this.r = new Random();
 		this.logo = new ImageIcon("logo.png").getImage();
+		this.teclas =  new ImageIcon("teclas.png").getImage();
+		this.randomNum = ThreadLocalRandom.current();
+		
 	}
 
 	public void mousePressed(MouseEvent e) {
 		int mx = e.getX();
 		int my = e.getY();
 		
-		//Boton: JUGAR
-		if(this.mouseOver(mx, my, 150, 175, 200, 55)) {
-			juego.estadoJuego = Juego.ESTADO.Juego;
-			//Agregar los objetos al juego
-			//Aquí inicia el juego
-			handler.addObject(new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario
-			//handler.addObject(new SlowCar(ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
-			//handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), 10, ID.SlowCar, handler));
-			//handler.addObject(new HeavyCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -80) + 1), -200, ID.HeavyCar, handler));
-		}
-		
-		//Boton: AYUDA
-		if(this.mouseOver(mx, my, 150, 250, 200, 55)){
-			juego.estadoJuego = Juego.ESTADO.Ayuda;
-		}
-		
-		//Regresar en Ayuda
-		if(juego.estadoJuego == Juego.ESTADO.Ayuda) {
-			if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
-				juego.estadoJuego = Juego.ESTADO.Menu;
-				return;
+		if (juego.estadoJuego == Juego.ESTADO.Menu) {		
+			//Boton: JUGAR
+			if(this.mouseOver(mx, my, 150, 175, 200, 55)) {
+				juego.estadoJuego = Juego.ESTADO.Juego;
+				//Agregar los objetos al juego
+				//Aquí inicia el juego
+				handler.addObject(new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario
+				handler.addObject(new SlowCar(Juego.ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
+				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), 10, ID.SlowCar, handler));
+				//handler.addObject(new HeavyCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -80) + 1), -200, ID.HeavyCar, handler));
+			}
+			
+			//Boton: AYUDA
+			if(this.mouseOver(mx, my, 150, 250, 200, 55)){
+				juego.estadoJuego = Juego.ESTADO.Ayuda;
+			}
+			
+			
+			//Boton: CRÉDITOS
+			if(this.mouseOver(mx, my, 150, 325, 200, 55)){
+				juego.estadoJuego = Juego.ESTADO.Creditos;
+			}
+			
+			//Boton: SALIR
+			if(this.mouseOver(mx, my, 150, 400, 200, 55)){
+				System.exit(1);
 			}
 		}
 		
-		//Boton: CRÉDITOS
-		if(this.mouseOver(mx, my, 150, 325, 200, 55)){
-			juego.estadoJuego = Juego.ESTADO.Creditos;
-		}
+		//Regresar en Ayuda
+				if(juego.estadoJuego == Juego.ESTADO.Ayuda) {
+					if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
+						juego.estadoJuego = Juego.ESTADO.Menu;
+						return;
+					}
+				}
 		
 		//Regresar en creditos
 		if(juego.estadoJuego == Juego.ESTADO.Creditos) {
@@ -64,11 +77,6 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				juego.estadoJuego = Juego.ESTADO.Menu;
 				return;
 			}
-		}
-		
-		//Boton: SALIR
-		if(this.mouseOver(mx, my, 150, 400, 200, 55)){
-			System.exit(1);
 		}
 		
 	}
@@ -130,6 +138,15 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			g.setColor(Color.white);
 			g.drawString("AYUDA", 160, 75);
 			
+			//Dibujar las teclas
+			g.drawImage(this.teclas, 200, 120, 115, 80, this);
+			
+			//Escribir el texto
+			g.setFont(fnt2);
+			g.drawString("Utiliza las teclas W,S,D y A", 60, 255);
+			g.drawString("para mover tu ferrari a los ", 65, 290);
+			g.drawString("lados y evitar a los enemigos.", 45, 325);
+			
 			//Regresar
 			g.setFont(fnt2);
 			g.drawRect(150, 400, 200, 55);
@@ -142,6 +159,13 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			g.setFont(fnt);
 			g.setColor(Color.white);
 			g.drawString("CRÉDITOS", 115, 75);
+			
+			//Texto
+			g.setFont(fnt2);
+			g.drawString("Este Juego fue creado por ", 60, 205);
+			g.drawString("Santiago Yeomans y Ángela R,", 30, 240);
+			g.drawString("con amor y usando JAVA.", 65, 275);
+			g.drawString("Gracias por Jugar :)", 110, 340);
 			
 			//Regresar
 			g.setFont(fnt2);
