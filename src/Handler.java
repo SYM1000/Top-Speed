@@ -30,6 +30,7 @@ public class Handler {
 			
 			if(tempObject.getId() == ID.Jugador) {
 				objeto.clear();
+				if(Juego.estadoJuego != Juego.ESTADO.GameOver)
 				addObject(new Jugador((int)tempObject.getVelX(), (int)tempObject.getY(), ID.Jugador, this));
 			}
 		}

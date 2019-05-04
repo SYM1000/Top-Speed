@@ -16,13 +16,15 @@ public class Menu extends MouseAdapter implements ImageObserver {
 	
 	public Juego juego;
 	public Handler handler;
+	private HUD hud;
 	private Random r;
 	private Image logo, teclas;
 	private ThreadLocalRandom randomNum;
 	
-	public Menu(Juego juego, Handler handler) {
+	public Menu(Juego juego, Handler handler, HUD hud) {
 		this.juego = juego;
 		this.handler = handler;
+		this.hud = hud;
 		this.r = new Random();
 		this.logo = new ImageIcon("logo.png").getImage();
 		this.teclas =  new ImageIcon("teclas.png").getImage();
@@ -76,6 +78,15 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
 				juego.estadoJuego = Juego.ESTADO.Menu;
 				return;
+			}
+		}
+		
+		//Regresar al menu
+		if(juego.estadoJuego == Juego.ESTADO.GameOver) {
+			if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
+				juego.estadoJuego = Juego.ESTADO.Menu;
+				hud.setNivel(1);
+				hud.setDistancia(0);
 			}
 		}
 		
@@ -171,6 +182,29 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			g.setFont(fnt2);
 			g.drawRect(150, 400, 200, 55);
 			g.drawString("Regresar", 185, 437);
+			
+		}else if(juego.estadoJuego == Juego.ESTADO.GameOver) {
+			Font fnt = new Font("arial", 1,50);
+			Font fnt2 = new Font("arial", 1,30);
+			
+			g.setFont(fnt);
+			g.setColor(Color.white);
+			g.drawString("GameOver", 125, 75);
+			
+			//Escribir el texto
+			g.setFont(fnt2);
+			g.drawString("Distancia Recorrida: ", 110, 215);
+			g.drawString(hud.getDistancia() + " metros", 180, 250);
+			
+			//para escribir más
+			//g.drawString("para mover tu ferrari a los ", 65, 290);
+			//g.drawString("lados y evitar a los enemigos.", 45, 325);
+			
+			//Regresar
+			g.setFont(fnt2);
+			g.drawRect(150, 400, 200, 55);
+			g.drawString("Ir al Menu", 185, 437);
+			
 		}
 		
 	}
