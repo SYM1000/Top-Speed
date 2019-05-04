@@ -48,7 +48,7 @@ public class Juego extends Canvas implements Runnable{
 		this.hilo = new Thread(this);
 		this.spawner =  new Spawn(handler, hud, this);
 		this.calle = new ImageIcon("Calle2.png").getImage();
-		this.fondo = new ImageIcon("fondo13.gif").getImage();
+		this.fondo = new ImageIcon("fondo4.gif").getImage();
 		//this.fondo = new ImageIcon("fondo.jpeg").getImage();
 		
 		AudioPlayer.load(); //Cargar la musica
@@ -144,11 +144,17 @@ public class Juego extends Canvas implements Runnable{
 		
 	}
 	
+	@Override
+	public void update(Graphics g) {
+		render();
+		handler.render(g);
+	}
+	
 	private void render() {
 		//mecanismo para organizar gráficos complejos en una ventana o canvas
 		BufferStrategy bs  = this.getBufferStrategy();
 		if(bs == null) {
-			this.createBufferStrategy(3);
+			this.createBufferStrategy(2);
 			return;
 		}
 		
