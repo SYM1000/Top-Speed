@@ -48,8 +48,7 @@ public class Juego extends Canvas implements Runnable{
 		this.hilo = new Thread(this);
 		this.spawner =  new Spawn(handler, hud, this);
 		this.calle = new ImageIcon("Calle2.png").getImage();
-		this.fondo = new ImageIcon("fondo4.gif").getImage();
-
+		this.fondo = new ImageIcon("fondo7.gif").getImage();
 		AudioPlayer.load(); //Cargar la musica
 		
 		AudioPlayer.getMusic("music").loop();
@@ -122,17 +121,12 @@ public class Juego extends Canvas implements Runnable{
 		if(this.estadoJuego == ESTADO.Juego) {
 			hud.tick();
 			spawner.tick();
-			//AudioPlayer.getMusic("music2").loop();
-			//AudioPlayer.getMusic("music").pause();
-			//AudioPlayer.getSound("motor").play();
-			
-			
 			
 			if(this.hud.SALUD <= 0) {
 				this.hud.SALUD = 100;
 				this.estadoJuego = ESTADO.GameOver;
 				handler.clearCars();	
-				AudioPlayer.getSound("gameover").play();														
+				AudioPlayer.getSound("gameover").play();												
 			}
 			
 		}else if(this.estadoJuego == ESTADO.Menu || this.estadoJuego == ESTADO.GameOver) {
@@ -148,7 +142,7 @@ public class Juego extends Canvas implements Runnable{
 	@Override
 	public void update(Graphics g) {
 		render();
-		handler.render(g);
+		//handler.render(g);
 	}
 	
 	private void render() {
@@ -172,8 +166,7 @@ public class Juego extends Canvas implements Runnable{
 			hud.render(g);
 		}else if(estadoJuego == ESTADO.Menu || estadoJuego == ESTADO.Ayuda || estadoJuego == ESTADO.Creditos || this.estadoJuego == ESTADO.GameOver) {
 			g.drawImage(this.fondo, 0, 0, Juego.ANCHO, Juego.ALTO, this);
-			menu.render(g);
-			
+			menu.render(g);		
 		}
 		
 		g.dispose();
