@@ -36,10 +36,8 @@ public class SlowCar extends GameObject implements ImageObserver{
 		x += velX;
 		y += velY;
 		
-		/*
-		if(y <= 0 || y >= Juego.ALTO) velY *=-1;
-		if(y <= 0 || y >= Juego.ANCHO) velX *=-1;
-		*/
+		x = (int) Juego.clamp(x, 120, (Juego.ANCHO - 140) - 50); //Ajustar el jugador en x
+		y = (int) Juego.clamp(y, -100, (Juego.ALTO + 200)- 94);
 		
 		// Eliminar el objeto cuando sale de la pantalla
 		if(y >= Juego.ANCHO) {

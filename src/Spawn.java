@@ -29,33 +29,33 @@ public class Spawn {
 	
 			
 			if(hud.getNivel() == 1) {
-				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), 10, ID.SlowCar, handler));			
+				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), -100, ID.SlowCar, handler));			
 			}else if(hud.getNivel() == 2) {
-				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), 10, ID.SlowCar, handler));
-				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), 10, ID.SlowCar, handler));
+				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), -100, ID.SlowCar, handler));
+				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), -100, ID.SlowCar, handler));
 			}else if(hud.getNivel() == 3) {
-				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -35) + 1), 10, ID.SlowCar, handler));
-				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -35) + 1), 10, ID.SlowCar, handler));
+				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -35) + 1), -100, ID.SlowCar, handler));
+				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -35) + 1), -100, ID.SlowCar, handler));
 			}else if(hud.getNivel() == 4) {
-				handler.addObject(new FastCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), 10, ID.FastCar, handler));
+				handler.addObject(new FastCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), -100, ID.FastCar, handler));
 			}else if(hud.getNivel() == 5) {
-				handler.addObject(new SmartCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -30 ) + 1), 10, ID.SmartCar, handler));
+				handler.addObject(new SmartCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -30 ) + 1), 0, ID.SmartCar, handler));
 			}else if(hud.getNivel() == 6) {
 				handler.addObject(new HeavyCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -80) + 1), -200, ID.HeavyCar, handler));
-				handler.addObject(new FastCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), 10, ID.FastCar, handler));
+				handler.addObject(new FastCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), -100, ID.FastCar, handler));
 			}else if(hud.getNivel() == 7) {
-				handler.addObject(new FastCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), 10, ID.FastCar, handler));
+				handler.addObject(new FastCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), -100, ID.FastCar, handler));
 			}else if(hud.getNivel() == 8) {
-				handler.addObject(new FastCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), 10, ID.FastCar, handler));
+				handler.addObject(new FastCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), -100, ID.FastCar, handler));
 				handler.addObject(new HeavyCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -80) + 1), -200, ID.HeavyCar, handler));	
-				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), 10, ID.SlowCar, handler));	
+				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), -100, ID.SlowCar, handler));	
 			}else if(hud.getNivel() == 9) {
-				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), 10, ID.SlowCar, handler));	
+				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), -100, ID.SlowCar, handler));	
 			}else if(hud.getNivel() == 10) {
 				handler.addObject(new HeavyCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -80) + 1), -200, ID.HeavyCar, handler));
-				handler.addObject(new FastCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), 10, ID.FastCar, handler));
-				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), 10, ID.SlowCar, handler));
-				handler.addObject(new SmartCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -30 ) + 1), 10, ID.SmartCar, handler));
+				handler.addObject(new FastCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), -100, ID.FastCar, handler));
+				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), -100, ID.SlowCar, handler));
+				handler.addObject(new SmartCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -30 ) + 1), 0, ID.SmartCar, handler));
 				hud.setNivel(0);
 				
 			}

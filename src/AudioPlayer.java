@@ -23,7 +23,7 @@ public class AudioPlayer{
 			soundMap.put("click", new Sound("recursos/click.wav"));
 			soundMap.put("arrancar", new Sound("recursos/MotorArrancar.wav"));
 			soundMap.put("acelerar", new Sound("recursos/Acelerar.wav"));
-			soundMap.put("motor", new Sound("recursos/motor.wav"));
+			//soundMap.put("motor", new Sound("recursos/motor.wav"));
 			soundMap.put("claxon", new Sound("recursos/claxon.wav"));
 			soundMap.put("gameover", new Sound("recursos/gameover.wav"));
 			
@@ -32,6 +32,7 @@ public class AudioPlayer{
 			
 			musicMap.put("music", new Music("recursos/intro.wav"));
 			musicMap.put("music2", new Music("recursos/juego.wav"));
+			//musicMap.put("motor", new Music("recursos/motorM.wav"));
 		} catch (SlickException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

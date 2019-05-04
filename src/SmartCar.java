@@ -47,10 +47,6 @@ public class SmartCar extends GameObject implements ImageObserver{
 		velX = (float) ((-1.0/distancia) * diffX ) - 1;
 		velY = (float) ((-1.0/distancia) * diffY ) + 2;
 		
-		/*
-		if(y <= 0 || y >= Juego.ALTO) velY *=-1;
-		if(y <= 0 || y >= Juego.ANCHO) velX *=-1;
-		*/
 		
 		// Eliminar el objeto cuando sale de la pantalla
 				if(y >= Juego.ANCHO) {

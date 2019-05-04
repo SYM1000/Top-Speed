@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 public class HUD {
@@ -27,6 +28,8 @@ public class HUD {
 	}
 	
 	public void render(Graphics g) {
+		Font fnt2 = new Font("arial", 1,20);
+		
 		g.setColor(Color.white);
 		g.fillRect(Juego.ANCHO - 215,15, 200, 32);
 		g.setColor(new Color(100, this.valorVerde, 0));
@@ -34,8 +37,11 @@ public class HUD {
 		g.setColor(Color.black);
 		g.drawRect(Juego.ANCHO - 215,15, 200, 32);
 		
-		g.drawString("Distancia: " + this.distancia  + "m" , Juego.ANCHO - 130, 64);
-		g.drawString("Nivel: " + this.nivel,Juego.ANCHO - 130 , 80);
+		g.setFont(fnt2);
+		g.setColor(Color.white);
+		g.drawString("Distancia: ", Juego.ANCHO - 130, 70);
+		g.drawString(this.distancia  + "m" , Juego.ANCHO - 130, 95);
+		//g.drawString("Nivel: " + this.nivel,Juego.ANCHO - 130 , 80);
 	}
 	
 	public void setDistancia(int distancia) {

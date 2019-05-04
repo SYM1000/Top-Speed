@@ -49,11 +49,11 @@ public class Juego extends Canvas implements Runnable{
 		this.spawner =  new Spawn(handler, hud, this);
 		this.calle = new ImageIcon("Calle2.png").getImage();
 		this.fondo = new ImageIcon("fondo4.gif").getImage();
-		//this.fondo = new ImageIcon("fondo.jpeg").getImage();
-		
+
 		AudioPlayer.load(); //Cargar la musica
 		
-		//AudioPlayer.getMusic("music").loop();
+		AudioPlayer.getMusic("music").loop();
+		//AudioPlayer.getMusic("motorM").loop();
 		
 		r = new Random();
 		this.randomNum = ThreadLocalRandom.current(); //Para probar
@@ -144,6 +144,7 @@ public class Juego extends Canvas implements Runnable{
 		
 	}
 	
+	/* Evitar el efecto parpadeo o Flickr*/
 	@Override
 	public void update(Graphics g) {
 		render();
@@ -162,8 +163,8 @@ public class Juego extends Canvas implements Runnable{
 		
 		//Para el fondo del juego
 		if(this.estadoJuego == ESTADO.Juego) { //<-------------
-			g.drawImage(this.calle, 0, 0, this.ANCHO, this.ALTO, this);		
-		}
+			g.drawImage(this.calle, 0, 0, this.ANCHO, this.ALTO, this);	
+			}
 
 		handler.render(g);
 		
