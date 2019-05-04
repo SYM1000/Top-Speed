@@ -46,17 +46,25 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				handler.addObject(new SlowCar(Juego.ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
 				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), 10, ID.SlowCar, handler));
 				//handler.addObject(new HeavyCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -80) + 1), -200, ID.HeavyCar, handler));
+			
+				AudioPlayer.getSound("click").play();
+				AudioPlayer.getSound("arrancar").play();
+				
 			}
 			
 			//Boton: AYUDA
 			if(this.mouseOver(mx, my, 150, 250, 200, 55)){
 				juego.estadoJuego = Juego.ESTADO.Ayuda;
+				AudioPlayer.getSound("click").play();
+				
 			}
 			
 			
 			//Boton: CRÉDITOS
 			if(this.mouseOver(mx, my, 150, 325, 200, 55)){
 				juego.estadoJuego = Juego.ESTADO.Creditos;
+				AudioPlayer.getSound("click").play();
+				
 			}
 			
 			//Boton: SALIR
@@ -68,6 +76,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		//Regresar en Ayuda
 				if(juego.estadoJuego == Juego.ESTADO.Ayuda) {
 					if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
+						AudioPlayer.getSound("click").play();
 						juego.estadoJuego = Juego.ESTADO.Menu;
 						return;
 					}
@@ -76,6 +85,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		//Regresar en creditos
 		if(juego.estadoJuego == Juego.ESTADO.Creditos) {
 			if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
+				AudioPlayer.getSound("click").play();
 				juego.estadoJuego = Juego.ESTADO.Menu;
 				return;
 			}
@@ -84,6 +94,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		//Regresar al menu
 		if(juego.estadoJuego == Juego.ESTADO.GameOver) {
 			if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
+				AudioPlayer.getSound("click").play();
 				juego.estadoJuego = Juego.ESTADO.Menu;
 				hud.setNivel(1);
 				hud.setDistancia(0);

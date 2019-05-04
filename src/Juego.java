@@ -7,6 +7,7 @@ import java.awt.RenderingHints;
 import java.awt.image.BufferStrategy;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import java.awt.image.BufferStrategy;
 
 import javax.swing.ImageIcon;
 
@@ -50,6 +51,10 @@ public class Juego extends Canvas implements Runnable{
 		this.fondo = new ImageIcon("fondo13.gif").getImage();
 		//this.fondo = new ImageIcon("fondo.jpeg").getImage();
 		
+		AudioPlayer.load(); //Cargar la musica
+		
+		//AudioPlayer.getMusic("music").loop();
+		
 		r = new Random();
 		this.randomNum = ThreadLocalRandom.current(); //Para probar
 		
@@ -61,6 +66,7 @@ public class Juego extends Canvas implements Runnable{
 			//handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), 10, ID.SlowCar, handler));
 			//handler.addObject(new HeavyCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -80) + 1), -200, ID.HeavyCar, handler));
 			*/
+			
 		}
 	}
 	
@@ -116,15 +122,24 @@ public class Juego extends Canvas implements Runnable{
 		if(this.estadoJuego == ESTADO.Juego) {
 			hud.tick();
 			spawner.tick();
+			//AudioPlayer.getMusic("music2").loop();
+			//AudioPlayer.getMusic("music").pause();
+			//AudioPlayer.getSound("motor").play();
+			
+			
 			
 			if(this.hud.SALUD <= 0) {
 				this.hud.SALUD = 100;
 				this.estadoJuego = ESTADO.GameOver;
-				handler.clearCars();				
+				handler.clearCars();	
+				AudioPlayer.getSound("gameover").play();														
 			}
 			
 		}else if(this.estadoJuego == ESTADO.Menu || this.estadoJuego == ESTADO.GameOver) {
 			menu.tick();
+			
+			//--------------------------------------
+			
 		}
 		
 	}
@@ -140,16 +155,9 @@ public class Juego extends Canvas implements Runnable{
 		Graphics g = bs.getDrawGraphics();	
 		
 		//Para el fondo del juego
-		g.setColor(Color.gray);
-		//g.fillRect(0, 0, ANCHO, ALTO);
-		
 		if(this.estadoJuego == ESTADO.Juego) { //<-------------
-			g.drawImage(this.calle, 0, 0, this.ANCHO, this.ALTO, this);
-			
-		} /*else if (this.estadoJuego == ESTADO.Menu ) {
-			g.drawImage(this.fondo, 0, 0, Juego.ANCHO, Juego.ALTO, this);
-			
-		}*/
+			g.drawImage(this.calle, 0, 0, this.ANCHO, this.ALTO, this);		
+		}
 
 		handler.render(g);
 		
@@ -157,8 +165,10 @@ public class Juego extends Canvas implements Runnable{
 			hud.render(g);
 		}else if(estadoJuego == ESTADO.Menu || estadoJuego == ESTADO.Ayuda || estadoJuego == ESTADO.Creditos || this.estadoJuego == ESTADO.GameOver) {
 			g.drawImage(this.fondo, 0, 0, Juego.ANCHO, Juego.ALTO, this);
-			menu.render(g);	
+			menu.render(g);
+			
 		}
+		
 		g.dispose();
 		bs.show();
 	}	
