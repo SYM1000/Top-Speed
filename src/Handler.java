@@ -24,6 +24,7 @@ public class Handler {
 		}
 	}
 	
+	//metodo para eliminar carros
 	public void clearCars() {
 		for(int i = 0; i < objeto.size(); i++ ) {
 			GameObject tempObject = objeto.get(i);
@@ -36,10 +37,12 @@ public class Handler {
 		}
 	}
 	
+	//Añadir objetos al juego 
 	public void addObject(GameObject objeto) {
 		this.objeto.add(objeto);
 	}
 	
+	//Remover objetos del juego
 	public void removeObject(GameObject objeto) {
 		this.objeto.remove(objeto);
 	}

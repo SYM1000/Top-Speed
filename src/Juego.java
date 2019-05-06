@@ -1,3 +1,5 @@
+//Para la elaboración de este juego se tomó como referencia esta guía:
+//https://www.youtube.com/watch?v=1gir2R7G9ws&list=PLWms45O3n--6TvZmtFHaCWRZwEqnz2MHa
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -17,13 +19,11 @@ public class Juego extends Canvas implements Runnable{
 	public static final int ALTO = 500;
 	private Thread hilo;
 	private boolean corriendo = false;
-	private Random r;
 	private Handler handler;
 	private HUD hud;
 	private Image calle;
 	private Spawn spawner;	
 	private Menu menu;
-	private ThreadLocalRandom randomNum; //Para probar
 	private Image fondo;
 	
 	public enum ESTADO{
@@ -48,33 +48,18 @@ public class Juego extends Canvas implements Runnable{
 		this.hilo = new Thread(this);
 		this.spawner =  new Spawn(handler, hud, this);
 		this.calle = new ImageIcon("Calle2.png").getImage();
-		this.fondo = new ImageIcon("fondo7.gif").getImage();
+		this.fondo = new ImageIcon("fondo7.gif").getImage();		
 		AudioPlayer.load(); //Cargar la musica
-		
-		AudioPlayer.getMusic("music").loop();
-		//AudioPlayer.getMusic("motorM").loop();
-		
-		r = new Random();
-		this.randomNum = ThreadLocalRandom.current(); //Para probar
-		
-		if(this.estadoJuego == ESTADO.Juego) {
-			/*
-			//Agregar los objetos al juego
-			handler.addObject(new Jugador(ANCHO/2 - 40, ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario
-			//handler.addObject(new SlowCar(ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
-			//handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), 10, ID.SlowCar, handler));
-			//handler.addObject(new HeavyCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -80) + 1), -200, ID.HeavyCar, handler));
-			*/
-			
-		}
+		AudioPlayer.getMusic("music").loop(); //Reproducir la musica en un loop cuando inicia el juego	
 	}
 	
+	//iniciar el juego
 	public synchronized void start() {
 		this.hilo = new Thread(this);
 		this.hilo.start();
 		this.corriendo = true;
 	}
-	
+	//Detener el juego
 	public synchronized void stop() {
 		try {
 			this.hilo.join();
@@ -102,13 +87,13 @@ public class Juego extends Canvas implements Runnable{
         		tick();
         		delta--;
         	}
-        	if(this.corriendo) // ó == true
+        	if(this.corriendo)
         		render();
         	frames++;
                             
         	if(System.currentTimeMillis() - timer > 1000){
         		timer += 1000;
-        		//System.out.println("FPS: "+ frames);
+        		System.out.println("FPS: "+ frames);
         		frames = 0;
         	}
         }
@@ -116,6 +101,7 @@ public class Juego extends Canvas implements Runnable{
 		
 	}
 	
+	//la lógica del juego
 	private void tick() {
 		handler.tick();	
 		if(this.estadoJuego == ESTADO.Juego) {
@@ -131,18 +117,14 @@ public class Juego extends Canvas implements Runnable{
 			
 		}else if(this.estadoJuego == ESTADO.Menu || this.estadoJuego == ESTADO.GameOver) {
 			menu.tick();
-			
-			//--------------------------------------
-			
 		}
 		
 	}
 	
-	/* Evitar el efecto parpadeo o Flickr*/
+	//Evitar el efecto parpadeo o Flickr
 	@Override
 	public void update(Graphics g) {
 		render();
-		//handler.render(g);
 	}
 	
 	private void render() {
@@ -182,16 +164,6 @@ public class Juego extends Canvas implements Runnable{
 		else 
 			return var;
 	}
-	
-	/*
-	public void Dormir(int milisegundos) {
-		try {
-			this.hilo.sleep(milisegundos);
-		}catch(Exception e) {
-			System.out.println(e);
-			}
-		}
-	*/
 	
 	public static void main(String[] args) {
 		new Juego();

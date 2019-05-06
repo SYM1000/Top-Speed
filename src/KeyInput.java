@@ -1,7 +1,7 @@
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-//Clase para las entradas del teclado
+//Clase para recibir las entradas del teclado y modificar la posicion del carro
 public class KeyInput extends KeyAdapter{
 
 	private Handler handler;
@@ -25,12 +25,7 @@ public class KeyInput extends KeyAdapter{
 			if(tempObject.getId() == ID.Jugador) {
 				//Eventos del Teclado para el usuario
 				
-				if(key == KeyEvent.VK_W) {
-					//AudioPlayer.getSound("acelerar").play();
-					tempObject.setVelY(-5); 
-					this.keyDown[0] =  true;
-				
-				}
+				if(key == KeyEvent.VK_W) {tempObject.setVelY(-5); this.keyDown[0] =  true;}
 				if(key == KeyEvent.VK_S) { tempObject.setVelY(5); this.keyDown[1] =  true;}
 				if(key == KeyEvent.VK_D) { tempObject.setVelX(3); this.keyDown[2] =  true;}
 				if(key == KeyEvent.VK_A) { tempObject.setVelX(-3); this.keyDown[3] =  true;}

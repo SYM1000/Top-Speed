@@ -1,3 +1,4 @@
+//Clase para el carro rápido
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -21,10 +22,8 @@ public class FastCar extends GameObject implements ImageObserver{
 		this.ancho = 38;
 		this.alto = 70;
 		this.handler = handler;
-		
 		velX = 0;
 		velY = 6;
-		
 	}
 	
 	public Rectangle getBounds(){

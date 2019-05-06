@@ -18,23 +18,17 @@ public class AudioPlayer{
 	
 	public static void load() {
 		
-		//Agregar musica al mapa de musica(nombre de la musica, de donde sacarla)
+		
 		try {
-			soundMap.put("click", new Sound("recursos/click.wav"));
-			soundMap.put("arrancar", new Sound("recursos/MotorArrancar.wav"));
-			soundMap.put("acelerar", new Sound("recursos/Acelerar.wav"));
-			//soundMap.put("motor", new Sound("recursos/motor.wav"));
-			soundMap.put("claxon", new Sound("recursos/claxon.wav"));
-			soundMap.put("gameover", new Sound("recursos/gameover.wav"));
+			//Agregar los sonidos
+			soundMap.put("click", new Sound("click.wav"));
+			soundMap.put("arrancar", new Sound("MotorArrancar.wav"));
+			soundMap.put("claxon", new Sound("claxon.wav"));
+			soundMap.put("gameover", new Sound("gameover.wav"));
 			
-			//Agregar los demas sonidos y musica
-			
-			
-			musicMap.put("music", new Music("recursos/intro.wav"));
-			musicMap.put("music2", new Music("recursos/juego.wav"));
-			//musicMap.put("motor", new Music("recursos/motorM.wav"));
+			//Agregar la musica
+			musicMap.put("music", new Music("intro.wav"));
 		} catch (SlickException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

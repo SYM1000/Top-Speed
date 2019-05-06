@@ -1,3 +1,4 @@
+//Clase para crear un frame donde se dibujará el juego
 import java.awt.Canvas;
 import java.awt.Dimension;
 import javax.swing.JFrame;

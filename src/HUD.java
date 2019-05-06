@@ -1,3 +1,6 @@
+/*Clase para crear el Hud del jugador
+ *Mostrar en pantalla la vida y la distancia recorrida
+ */
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -41,7 +44,6 @@ public class HUD {
 		g.setColor(Color.white);
 		g.drawString("Distancia: ", Juego.ANCHO - 130, 70);
 		g.drawString(this.distancia  + "m" , Juego.ANCHO - 130, 95);
-		//g.drawString("Nivel: " + this.nivel,Juego.ANCHO - 130 , 80);
 	}
 	
 	public void setDistancia(int distancia) {

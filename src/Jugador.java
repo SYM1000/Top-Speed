@@ -1,3 +1,4 @@
+//Clase del jugador principal/carro/usuario
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -19,7 +20,7 @@ public class Jugador extends GameObject implements ImageObserver{
 
 	public Jugador(int x, int y, ID id, Handler handler) {
 		super(x, y, id);	
-		this.carro = new ImageIcon("Sprites/ferrari_carro-removebg.png").getImage();
+		this.carro = new ImageIcon("ferrari_carro-removebg.png").getImage();
 		this.ancho = 35;
 		this.alto = 72;
 		this.handler = handler;
@@ -31,22 +32,20 @@ public class Jugador extends GameObject implements ImageObserver{
 	
 	public void tick() {
 		x += velX;
-		y += velY;
-		
+		y += velY;		
 		x = (int) Juego.clamp(x, 120, (Juego.ANCHO - 140) - 35); //Ajustar el jugador en x
-		y = (int) Juego.clamp(y, 0, Juego.ALTO - 94);
-		
-		collision();
-		
+		y = (int) Juego.clamp(y, 0, Juego.ALTO - 94);		
+		collision();		
 	}
 	
 	public void collision() {
+		//detectar las colisiones con cada objeto del juego
 		for(int i = 0; i< handler.objeto.size();i++) {
 			GameObject tempObject = handler.objeto.get(i);
 			
 			if(tempObject.getId() == ID.SlowCar || tempObject.getId() == ID.FastCar || tempObject.getId() == ID.SmartCar || tempObject.getId() == ID.HeavyCar) { //El objeto temporal es el carro lento
 				if(getBounds().intersects(tempObject.getBounds())) {
-					//Lo que ocurre si coliciona con el carro lento
+					//Lo que ocurre si coliciona con un carro
 					if (tempObject.getId() == ID.SlowCar) {
 						HUD.SALUD -= 1;			
 					}else if (tempObject.getId() == ID.FastCar) {
@@ -54,7 +53,7 @@ public class Jugador extends GameObject implements ImageObserver{
 					}else if (tempObject.getId() == ID.SmartCar) {
 						HUD.SALUD -= 2;
 					}else if (tempObject.getId() == ID.HeavyCar) {
-						HUD.SALUD -= 15;
+						HUD.SALUD -= 10;
 					}
 				}
 			}
@@ -63,22 +62,14 @@ public class Jugador extends GameObject implements ImageObserver{
 	}
 
 	public void render(Graphics g) {
-		
 		Graphics2D g2d = (Graphics2D) g;
 		
-		/*
-		 * Vizualizar la caja con la que hace contacto 
-		g.setColor(Color.green);
-		g2d.draw(getBounds());
-		*/
-		
 		//Dibujar la imagen del objeto (carrito)
-		g.drawImage(this.carro, (int)x, (int)y, this.ancho, this.alto, this);
-		
+		g.drawImage(this.carro, (int)x, (int)y, this.ancho, this.alto, this);	
 	}
 
 	
-	//Para arreglar el añadir una imgan
+	//Arreglar cunado se agrega una imagen
 	public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {
 		// TODO Auto-generated method stub
 		return false;

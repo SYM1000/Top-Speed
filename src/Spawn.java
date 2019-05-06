@@ -1,20 +1,16 @@
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+//Clase para generar diferentes enemigos en diferentes posiciones 
 public class Spawn {
-
 	private Handler handler;
 	private HUD hud;
-	private Juego juego;
 	private int puntuacion = 0;
 	private ThreadLocalRandom randomNum;
-	private Random r;
 	
 	public Spawn(Handler handler, HUD hud, Juego juego) {
 		this.handler = handler;
 		this.hud = hud;
-		this.juego = juego;
-		r = new Random();
 		this.randomNum = ThreadLocalRandom.current();
 	}
 	
@@ -24,10 +20,8 @@ public class Spawn {
 		if(this.puntuacion >= 100) { //Cada vez que se complete se suma un nivel
 			puntuacion = 0;
 			hud.setNivel(hud.getNivel() + 1); //Incrementar el nivel en 1 cada ves que se llegue a 1km
-			
-			int inicio = this.r.nextInt(((Juego.ANCHO - 140) - 120) + 1) + 120;
-	
-			
+				
+			//Generar un tipo de enemigo dependiendo del nivel en el que se está
 			if(hud.getNivel() == 1) {
 				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) - 35) + 1), -100, ID.SlowCar, handler));			
 			}else if(hud.getNivel() == 2) {
@@ -59,8 +53,6 @@ public class Spawn {
 				hud.setNivel(0);
 				
 			}
-			//Metodo para eliminar todos los objetos del juego
-			//handler.clearCars();
 		}
 		
 	}

@@ -12,12 +12,12 @@ import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+//Clase para crear el menu del juego
 public class Menu extends MouseAdapter implements ImageObserver {
 	
 	public Juego juego;
 	public Handler handler;
 	private HUD hud;
-	private Random r;
 	private Image logo, teclas;
 	private ThreadLocalRandom randomNum;
 	
@@ -25,7 +25,6 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		this.juego = juego;
 		this.handler = handler;
 		this.hud = hud;
-		this.r = new Random();
 		this.logo = new ImageIcon("logo.png").getImage();
 		this.teclas =  new ImageIcon("teclas.png").getImage();
 		this.randomNum = ThreadLocalRandom.current();
@@ -40,12 +39,12 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			//Boton: JUGAR
 			if(this.mouseOver(mx, my, 150, 175, 200, 55)) {
 				juego.estadoJuego = Juego.ESTADO.Juego;
-				//Agregar los objetos al juego
+				
 				//Aquí inicia el juego
-				handler.addObject(new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario
+				//Agregar el jugador y unos enemigos al inico del juego		
+				handler.addObject(new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario	
 				handler.addObject(new SlowCar(Juego.ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
-				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), 10, ID.SlowCar, handler));
-				//handler.addObject(new HeavyCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -80) + 1), -200, ID.HeavyCar, handler));
+				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), -100, ID.SlowCar, handler));
 			
 				AudioPlayer.getSound("click").play();
 				AudioPlayer.getSound("arrancar").play();
@@ -132,7 +131,6 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			
 			g.setFont(fnt);
 			g.setColor(Color.white);
-			//g.drawString("Top Speed", 125, 75);
 			g.drawImage(this.logo, 155, 20, 180, 150, this);
 			
 			g.setFont(fnt2);
@@ -185,7 +183,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			//Texto
 			g.setFont(fnt2);
 			g.drawString("Este Juego fue creado por ", 60, 205);
-			g.drawString("Santiago Yeomans y Ángela R,", 30, 240);
+			g.drawString("Santiago Yeomans,", 120, 240);
 			g.drawString("con amor y usando JAVA.", 65, 275);
 			g.drawString("Gracias por Jugar :)", 110, 340);
 			
@@ -206,10 +204,6 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			g.setFont(fnt2);
 			g.drawString("Distancia Recorrida: ", 110, 215);
 			g.drawString(hud.getDistancia() + " metros", 180, 250);
-			
-			//para escribir más
-			//g.drawString("para mover tu ferrari a los ", 65, 290);
-			//g.drawString("lados y evitar a los enemigos.", 45, 325);
 			
 			//Regresar
 			g.setFont(fnt2);

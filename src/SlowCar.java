@@ -1,3 +1,4 @@
+//Enemigo basico y el más fácil
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -20,8 +21,7 @@ public class SlowCar extends GameObject implements ImageObserver{
 		this.police = new ImageIcon("Police2.png").getImage();
 		this.ancho = 35;
 		this.alto = 70;
-		this.handler = handler;
-		
+		this.handler = handler;		
 		velX = 0;
 		velY = 2;
 		
@@ -46,7 +46,6 @@ public class SlowCar extends GameObject implements ImageObserver{
 	}
 
 	public void render(Graphics g) {
-		g.setColor(Color.red);
 		g.drawImage(this.police, (int)x, (int)y, this.ancho, this.alto, this);
 	}
 

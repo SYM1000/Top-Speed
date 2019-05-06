@@ -1,3 +1,7 @@
+/*Clase del enemigo que sigue al jugador cuando esta cerca 
+ * Algoritmo de seguimiento por:
+ * https://www.youtube.com/channel/UCOs7Q7IeuzgRyARaEqif75A
+ */
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;

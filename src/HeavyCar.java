@@ -1,3 +1,4 @@
+//Clase para el carro: tanque
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -21,7 +22,6 @@ public class HeavyCar extends GameObject implements ImageObserver{
 		this.ancho = 80;
 		this.alto = 120;
 		this.handler = handler;
-		
 		velX = 0;
 		velY = 1;
 		
@@ -46,7 +46,6 @@ public class HeavyCar extends GameObject implements ImageObserver{
 	}
 
 	public void render(Graphics g) {
-		g.setColor(Color.red);
 		g.drawImage(this.tanque, (int)x, (int)y, this.ancho, this.alto, this);
 	}
 
