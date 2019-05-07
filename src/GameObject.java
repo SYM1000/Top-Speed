@@ -1,3 +1,5 @@
+//Santiago Yeomans 
+//A01251000
 import java.awt.Graphics;
 import java.awt.Rectangle;
 

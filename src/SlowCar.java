@@ -1,3 +1,5 @@
+//Santiago Yeomans 
+//A01251000
 //Enemigo basico y el más fácil
 import java.awt.Color;
 import java.awt.Graphics;

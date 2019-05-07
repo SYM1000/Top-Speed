@@ -1,3 +1,5 @@
+//Santiago Yeomans 
+//A01251000
 //Clase para el carro: tanque
 import java.awt.Color;
 import java.awt.Graphics;

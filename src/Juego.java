@@ -1,3 +1,5 @@
+//Santiago Yeomans 
+//A01251000
 //Para la elaboración de este juego se tomó como referencia esta guía:
 //https://www.youtube.com/watch?v=1gir2R7G9ws&list=PLWms45O3n--6TvZmtFHaCWRZwEqnz2MHa
 import java.awt.Canvas;

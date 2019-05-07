@@ -1,3 +1,5 @@
+//Santiago Yeomans 
+//A01251000
 /*Clase para crear el Hud del jugador
  *Mostrar en pantalla la vida y la distancia recorrida
  */

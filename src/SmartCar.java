@@ -1,3 +1,5 @@
+//Santiago Yeomans 
+//A01251000
 /*Clase del enemigo que sigue al jugador cuando esta cerca 
  * Algoritmo de seguimiento por:
  * https://www.youtube.com/channel/UCOs7Q7IeuzgRyARaEqif75A

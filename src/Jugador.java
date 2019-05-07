@@ -1,3 +1,5 @@
+//Santiago Yeomans 
+//A01251000
 //Clase del jugador principal/carro/usuario
 import java.awt.Color;
 import java.awt.Graphics;

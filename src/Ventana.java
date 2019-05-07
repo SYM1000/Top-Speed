@@ -1,3 +1,5 @@
+//Santiago Yeomans 
+//A01251000
 //Clase para crear un frame donde se dibujará el juego
 import java.awt.Canvas;
 import java.awt.Dimension;
