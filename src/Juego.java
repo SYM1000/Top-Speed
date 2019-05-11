@@ -19,7 +19,8 @@ public class Juego extends Canvas implements Runnable{
 
 	public static final int ANCHO = 500;
 	public static final int ALTO = 500;
-	private Thread hilo;
+	private Thread hilo,
+					lineas;
 	private boolean corriendo = false;
 	private Handler handler;
 	private HUD hud;
