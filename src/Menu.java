@@ -42,14 +42,20 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			if(this.mouseOver(mx, my, 150, 175, 200, 55)) {
 				juego.estadoJuego = Juego.ESTADO.Juego;
 				
+				AudioPlayer.getSound("click").play();
+				AudioPlayer.getSound("arrancar").play();
+				
 				//Aquí inicia el juego
 				//Agregar el jugador y unos enemigos al inico del juego		
+				
+				//Argregara objeto de la linea
+				handler.addObject(new Linea(Juego.ANCHO/2 - 40,0, ID.Linea, handler)); //Lineas
+				
 				handler.addObject(new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario	
 				handler.addObject(new SlowCar(Juego.ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
 				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), -100, ID.SlowCar, handler));
-			
-				AudioPlayer.getSound("click").play();
-				AudioPlayer.getSound("arrancar").play();
+				
+				
 				
 			}
 			

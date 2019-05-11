@@ -7,5 +7,6 @@ public enum ID {
 	SlowCar(),
 	FastCar(),
 	SmartCar(),
-	HeavyCar();
+	HeavyCar(),
+	Linea();
 }
