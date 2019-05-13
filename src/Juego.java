@@ -28,6 +28,7 @@ public class Juego extends Canvas implements Runnable{
 	private Spawn spawner;	
 	private Menu menu;
 	private Image fondo;
+	private boolean Lineas = false;
 	
 	public enum ESTADO{
 		Menu,
