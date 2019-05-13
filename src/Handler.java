@@ -21,8 +21,15 @@ public class Handler {
 	public void render(Graphics g) {
 		for(int i=0; i<objeto.size(); i++) {
 			GameObject tempObject = objeto.get(i);
-			
-			tempObject.render(g);
+			if(tempObject instanceof Linea) {
+				tempObject.render(g);	
+			}
+		}
+		for(int i=0; i<objeto.size(); i++) {
+			GameObject tempObject = objeto.get(i);
+			if(!(tempObject instanceof Linea)) {
+				tempObject.render(g);	
+			}
 		}
 	}
 	
