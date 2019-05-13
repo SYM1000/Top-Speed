@@ -169,8 +169,16 @@ public class Juego extends Canvas implements Runnable{
 			return var;
 	}
 	
+	public void setLineas(boolean valor) {
+		this.Lineas = valor;
+		
+	}
+	
+	
 	public static void main(String[] args) {
 		new Juego();
 	}
+
+	
 
 }

@@ -56,6 +56,10 @@ public class Linea extends GameObject{
 		g.fillRect((int)(x), 600 + (int)(y), ancho, alto);
 		
 		g.fillRect((int)(x), 750 + (int)(y), ancho, alto);
+		
+		g.fillRect((int)(x), 900 + (int)(y), ancho, alto);
+		
+		//g.fillRect((int)(x), 1050 + (int)(y), ancho, alto);
 	}
 
 	@Override

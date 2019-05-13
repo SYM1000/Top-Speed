@@ -22,15 +22,14 @@ public class Menu extends MouseAdapter implements ImageObserver {
 	private HUD hud;
 	private Image logo, teclas;
 	private ThreadLocalRandom randomNum;
-	
+
 	public Menu(Juego juego, Handler handler, HUD hud) {
 		this.juego = juego;
 		this.handler = handler;
 		this.hud = hud;
 		this.logo = new ImageIcon("logo.png").getImage();
 		this.teclas =  new ImageIcon("teclas.png").getImage();
-		this.randomNum = ThreadLocalRandom.current();
-		
+		this.randomNum = ThreadLocalRandom.current();	
 	}
 
 	public void mousePressed(MouseEvent e) {
@@ -44,12 +43,47 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				
 				AudioPlayer.getSound("click").play();
 				AudioPlayer.getSound("arrancar").play();
-				
+				handler.addObject(new Linea(Juego.ANCHO/2 - 40, -400 , ID.Linea, handler));
 				//Aquí inicia el juego
 				//Agregar el jugador y unos enemigos al inico del juego		
 				
 				//Argregara objeto de la linea
+				
+				//Clase interna
+				class moverLineas extends Thread{
+					//Clase interna que exitende de thread para crear un hilo en el que se creará las lineas
+					//Para simular el movimiento de las lineas
+					
+					public void run() {
+						//handler.addObject(new Linea(Juego.ANCHO/2 - 40,0, ID.Linea, handler)); //Lineas
+						try {
+							
+							while (true) {
+								Thread.sleep(2500);
+								handler.addObject(new Linea(Juego.ANCHO/2 - 40, -400 , ID.Linea, handler)); //Lineas
+							}
+							/*
+							Thread.sleep(1000);
+							handler.addObject(new Linea(Juego.ANCHO/2 - 40,0, ID.Linea, handler)); //Lineas
+							Thread.sleep(1000);
+							handler.addObject(new Linea(Juego.ANCHO/2 - 40,0, ID.Linea, handler)); //Lineas
+							*/
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+						
+					}
+					
+				}
+				moverLineas mv = new moverLineas();	
+						
+				mv.start();
+				
+				
+				/*
 				handler.addObject(new Linea(Juego.ANCHO/2 - 40,0, ID.Linea, handler)); //Lineas
+				juego.setLineas(true);
+				*/
 				
 				handler.addObject(new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario	
 				handler.addObject(new SlowCar(Juego.ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
@@ -63,6 +97,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			if(this.mouseOver(mx, my, 150, 250, 200, 55)){
 				juego.estadoJuego = Juego.ESTADO.Ayuda;
 				AudioPlayer.getSound("click").play();
+				
 				
 			}
 			
@@ -100,6 +135,8 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		
 		//Regresar al menu
 		if(juego.estadoJuego == Juego.ESTADO.GameOver) {
+			//Detener clase con hilo
+			//mv.stop();
 			if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
 				AudioPlayer.getSound("click").play();
 				juego.estadoJuego = Juego.ESTADO.Menu;
