@@ -43,7 +43,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				
 				AudioPlayer.getSound("click").play();
 				AudioPlayer.getSound("arrancar").play();
-				handler.addObject(new Linea(Juego.ANCHO/2 - 40, -400 , ID.Linea, handler));
+				handler.addObject(new Linea(Juego.ANCHO/2 - 19, -400 , ID.Linea, handler));
 				//Aquí inicia el juego
 				//Agregar el jugador y unos enemigos al inico del juego		
 				
@@ -60,7 +60,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 							
 							while (true) {
 								Thread.sleep(2500);
-								handler.addObject(new Linea(Juego.ANCHO/2 - 40, -400 , ID.Linea, handler)); //Lineas
+								handler.addObject(new Linea(Juego.ANCHO/2 - 19, -400 , ID.Linea, handler)); //Lineas
 							}
 							/*
 							Thread.sleep(1000);
