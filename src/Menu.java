@@ -102,7 +102,8 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		//Regresar al menu
 		if(juego.estadoJuego == Juego.ESTADO.GameOver) {
 			//Detener clase con hilo
-	
+			//this.mvs.detener();
+			
 			if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
 				AudioPlayer.getSound("click").play();
 				juego.estadoJuego = Juego.ESTADO.Menu;

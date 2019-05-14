@@ -33,12 +33,7 @@ public class moverLinea extends Thread{
 	}
 	
 	public synchronized void detener() {
-		try {
-			this.join();
 			this.correr =  false;			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
 		
 	}
 	
