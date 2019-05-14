@@ -17,4 +17,4 @@ Try Your Best and Have Fun!
 
 
 # Thank You :)
-IS NOT A BUG, IT´S A FEATURE.
+IT´S NOT A BUG, IT´S A FEATURE.
