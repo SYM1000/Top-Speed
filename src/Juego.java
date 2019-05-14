@@ -27,6 +27,7 @@ public class Juego extends Canvas implements Runnable{
 	private Image calle;
 	private Spawn spawner;	
 	private Menu menu;
+	private Jugador jugador;
 	private Image fondo;
 	private boolean Lineas = false;
 	
@@ -46,7 +47,7 @@ public class Juego extends Canvas implements Runnable{
 	public Juego() {
 		this.handler = new Handler();
 		this.hud = new HUD();
-		this.menu = new Menu(this, handler, hud);
+		this.menu = new Menu(this, handler, hud, jugador);
 		this.addKeyListener(new KeyInput(handler));
 		this.addMouseListener(menu);
 		new Ventana(ANCHO, ALTO, "Top Speed", this);

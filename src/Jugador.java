@@ -10,19 +10,25 @@ import java.awt.image.ImageObserver;
 import java.util.Random;
 
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 public class Jugador extends GameObject implements ImageObserver{
 	
 	private Image carro;
+	private Image carro2;
 	private int ancho;
 	private int alto;
+	public String nombre_carro;
 	
 	Random r = new Random();
 	Handler handler;
 
 	public Jugador(int x, int y, ID id, Handler handler) {
-		super(x, y, id);	
-		this.carro = new ImageIcon("ferrari_carro-removebg.png").getImage();
+		super(x, y, id);
+		this.nombre_carro = "ferrari_carro-removebg.png";
+		this.carro = new ImageIcon(this.nombre_carro).getImage();
+		this.carro2 = new ImageIcon("lambo_carro.png").getImage();
+		
 		this.ancho = 35;
 		this.alto = 72;
 		this.handler = handler;
@@ -67,7 +73,28 @@ public class Jugador extends GameObject implements ImageObserver{
 		Graphics2D g2d = (Graphics2D) g;
 		
 		//Dibujar la imagen del objeto (carrito)
-		g.drawImage(this.carro, (int)x, (int)y, this.ancho, this.alto, this);	
+		if(this.nombre_carro == "ferrari_carro-removebg.png") {
+			g.drawImage(this.carro, (int)x, (int)y, this.ancho, this.alto, this);	
+		} else if (this.nombre_carro == "lambo_carro.jpg") {
+			g.drawImage(this.carro2, (int)x, (int)y, this.ancho, this.alto, this);
+		}
+		
+	}
+	
+	public void setCarro(String marca) {
+		if (marca == "ferrari" ) {
+			//this.carro = new ImageIcon("ferrari_carro-removebg.png").getImage();
+			this.nombre_carro = "ferrari_carro-removebg.png";
+			
+		} else if(marca == "lamborghini") {
+			//this.carro = new ImageIcon("lambo_carro.jpg").getImage();
+			this.nombre_carro = "lambo_carro.jpg";
+			
+		} else {
+			//this.carro = new ImageIcon("ferrari_carro-removebg.png").getImage();
+			this.nombre_carro = "ferrari_carro-removebg.png";
+		}
+		
 	}
 
 	
