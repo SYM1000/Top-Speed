@@ -36,6 +36,7 @@ public class Juego extends Canvas implements Runnable{
 		Ayuda,
 		Creditos,
 		GameOver,
+		Skins,
 		
 	};
 	
@@ -150,7 +151,7 @@ public class Juego extends Canvas implements Runnable{
 		
 		if(this.estadoJuego == ESTADO.Juego) {			
 			hud.render(g);
-		}else if(estadoJuego == ESTADO.Menu || estadoJuego == ESTADO.Ayuda || estadoJuego == ESTADO.Creditos || this.estadoJuego == ESTADO.GameOver) {
+		}else if(estadoJuego == ESTADO.Menu || estadoJuego == ESTADO.Ayuda || estadoJuego == ESTADO.Creditos || estadoJuego == ESTADO.Skins || this.estadoJuego == ESTADO.GameOver) {
 			g.drawImage(this.fondo, 0, 0, Juego.ANCHO, Juego.ALTO, this);
 			menu.render(g);		
 		}

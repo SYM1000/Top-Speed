@@ -20,7 +20,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 	public Juego juego;
 	public Handler handler;
 	private HUD hud;
-	private Image logo, teclas;
+	private Image logo, teclas, ferrari;
 	private moverLinea mvs;
 	private ThreadLocalRandom randomNum;
 
@@ -30,6 +30,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		this.hud = hud;
 		this.logo = new ImageIcon("logo.png").getImage();
 		this.teclas =  new ImageIcon("teclas.png").getImage();
+		this.ferrari =  new ImageIcon("ferrari_carro-removebg.png").getImage();
 		this.randomNum = ThreadLocalRandom.current();
 		moverLinea mvs = new moverLinea(this);
 		this.mvs = mvs;
@@ -79,6 +80,14 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			if(this.mouseOver(mx, my, 150, 400, 200, 55)){
 				System.exit(1);
 			}
+			
+			
+			//Boton: Skins
+			if(this.mouseOver(mx, my, 380, 175, 100, 55)){
+				juego.estadoJuego = Juego.ESTADO.Skins;
+				AudioPlayer.getSound("click").play();
+			}
+			
 		}
 		
 		//Regresar en Ayuda
@@ -98,6 +107,15 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				return;
 			}
 		}
+		
+		//Regresar en creditos
+			if(juego.estadoJuego == Juego.ESTADO.Skins) {
+				if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
+					AudioPlayer.getSound("click").play();
+					juego.estadoJuego = Juego.ESTADO.Menu;
+					return;
+				}
+			}
 		
 		//Regresar al menu
 		if(juego.estadoJuego == Juego.ESTADO.GameOver) {
@@ -139,6 +157,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		if(juego.estadoJuego == Juego.ESTADO.Menu) {	
 			Font fnt = new Font("arial", 1,50);
 			Font fnt2 = new Font("arial", 1,30);
+			Font fnt3 = new Font("arial", 1,25);
 			
 			g.setFont(fnt);
 			g.setColor(Color.white);
@@ -160,6 +179,10 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			
 			g.drawRect(150, 400, 200, 55);
 			g.drawString("SALIR", 205, 440);
+			
+			g.setFont(fnt3);
+			g.drawRect(380, 175, 100, 55);
+			g.drawString("SKINS", 390, 210);
 			
 		}else if(juego.estadoJuego == Juego.ESTADO.Ayuda) {
 			Font fnt = new Font("arial", 1,50);
@@ -215,6 +238,28 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			g.setFont(fnt2);
 			g.drawString("Distancia Recorrida: ", 110, 215);
 			g.drawString(hud.getDistancia() + " metros", 180, 250);
+			
+			//Regresar
+			g.setFont(fnt2);
+			g.drawRect(150, 400, 200, 55);
+			g.drawString("Ir al Menu", 185, 437);
+			
+		} else if(juego.estadoJuego == Juego.ESTADO.Skins) {
+			//this.mvs.detener();
+			Font fnt = new Font("arial", 1,50);
+			Font fnt2 = new Font("arial", 1,30);
+			
+			g.setFont(fnt);
+			g.setColor(Color.white);
+			g.drawString("SKINS", 180, 75);
+			
+			//Dibujar el ferrari
+			g.drawRect(150, 175, 200, 55);
+			g.drawImage(this.ferrari, 150, 175, 35, 72, this);
+			
+			
+			
+			
 			
 			//Regresar
 			g.setFont(fnt2);
