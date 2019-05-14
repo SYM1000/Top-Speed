@@ -33,21 +33,20 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		this.randomNum = ThreadLocalRandom.current();
 		moverLinea mvs = new moverLinea(this);
 		this.mvs = mvs;
-		this.mvs.start();
+		this.mvs.iniciar();
+		
 	}
 
 	public void mousePressed(MouseEvent e) {
 		int mx = e.getX();
 		int my = e.getY();
-		
 		if (juego.estadoJuego == Juego.ESTADO.Menu) {
 			
 			//Boton: JUGAR
 			if(this.mouseOver(mx, my, 150, 175, 200, 55)) {
-				mvs.setCorrer(false);
 				//Aquí inicia el juego
 				juego.estadoJuego = Juego.ESTADO.Juego;
-				mvs.setCorrer(true);
+				//mvs.setCorrer(true);
 				AudioPlayer.getSound("click").play();
 				AudioPlayer.getSound("arrancar").play();
 				
@@ -64,7 +63,6 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			if(this.mouseOver(mx, my, 150, 250, 200, 55)){
 				juego.estadoJuego = Juego.ESTADO.Ayuda;
 				AudioPlayer.getSound("click").play();
-				mvs.setCorrer(false);
 				
 				
 			}
@@ -74,7 +72,6 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			if(this.mouseOver(mx, my, 150, 325, 200, 55)){
 				juego.estadoJuego = Juego.ESTADO.Creditos;
 				AudioPlayer.getSound("click").play();
-				mvs.setCorrer(false);
 				
 			}
 			
@@ -104,7 +101,6 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		
 		//Regresar al menu
 		if(juego.estadoJuego == Juego.ESTADO.GameOver) {
-			mvs.setCorrer(false);
 			//Detener clase con hilo
 	
 			if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
@@ -112,7 +108,6 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				juego.estadoJuego = Juego.ESTADO.Menu;
 				hud.setNivel(1);
 				hud.setDistancia(0);
-				mvs.setCorrer(false);
 			}
 		}
 		

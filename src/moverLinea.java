@@ -7,7 +7,7 @@ public class moverLinea extends Thread{
 	
 	public moverLinea(Menu menu) {
 		this.menu = menu;
-		this.correr = true;
+		this.correr = false;
 		
 	}
 
@@ -40,6 +40,11 @@ public class moverLinea extends Thread{
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public synchronized void iniciar() {
+		this.start();
+		this.correr = true;
 	}
 		
 	}
