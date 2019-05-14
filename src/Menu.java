@@ -21,7 +21,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 	public Handler handler;
 	private HUD hud;
 	private Image logo, teclas;
-	private moverLinea mv;
+	private moverLinea mvs;
 	private ThreadLocalRandom randomNum;
 
 	public Menu(Juego juego, Handler handler, HUD hud) {
@@ -30,72 +30,33 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		this.hud = hud;
 		this.logo = new ImageIcon("logo.png").getImage();
 		this.teclas =  new ImageIcon("teclas.png").getImage();
-		this.randomNum = ThreadLocalRandom.current();	
+		this.randomNum = ThreadLocalRandom.current();
+		moverLinea mvs = new moverLinea(this);
+		this.mvs = mvs;
+		this.mvs.start();
 	}
 
 	public void mousePressed(MouseEvent e) {
 		int mx = e.getX();
 		int my = e.getY();
-		moverLinea mvs = new moverLinea(this);
 		
 		if (juego.estadoJuego == Juego.ESTADO.Menu) {
+			
 			//Boton: JUGAR
 			if(this.mouseOver(mx, my, 150, 175, 200, 55)) {
+				mvs.setCorrer(false);
+				//Aquí inicia el juego
 				juego.estadoJuego = Juego.ESTADO.Juego;
-				
+				mvs.setCorrer(true);
 				AudioPlayer.getSound("click").play();
 				AudioPlayer.getSound("arrancar").play();
-				handler.addObject(new Linea(Juego.ANCHO/2 - 19, -400 , ID.Linea, handler));
-				//Aquí inicia el juego
+				
+				//handler.addObject(new Linea(Juego.ANCHO/2 - 19, -400 , ID.Linea, handler)); //Agregar una linea para debuggear
+				
 				//Agregar el jugador y unos enemigos al inico del juego		
-				
-				//Argregara objeto de la linea
-				
-				
-				//Clase interna
-				/*
-				class moverLineas extends Thread{
-					//Clase interna que exitende de thread para crear un hilo en el que se creará las lineas
-					//Para simular el movimiento de las lineas
-					
-					public void run() {
-						//handler.addObject(new Linea(Juego.ANCHO/2 - 40,0, ID.Linea, handler)); //Lineas
-						try {
-							
-							while (true) {
-								Thread.sleep(2500);
-								handler.addObject(new Linea(Juego.ANCHO/2 - 19, -400 , ID.Linea, handler)); //Lineas
-							}
-							//
-							
-							Thread.sleep(1000);
-							handler.addObject(new Linea(Juego.ANCHO/2 - 40,0, ID.Linea, handler)); //Lineas
-							Thread.sleep(1000);
-							handler.addObject(new Linea(Juego.ANCHO/2 - 40,0, ID.Linea, handler)); //Lineas
-							
-							//
-							 
-						} catch (InterruptedException e) {
-							e.printStackTrace();
-						}
-						
-					}
-					
-				}*/
-				//moverLineas mv = new moverLineas();	
-				//mv.start();
-				mvs.start();
-				
-				/*
-				handler.addObject(new Linea(Juego.ANCHO/2 - 40,0, ID.Linea, handler)); //Lineas
-				juego.setLineas(true);
-				*/
-				
 				handler.addObject(new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario	
 				handler.addObject(new SlowCar(Juego.ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
 				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), -100, ID.SlowCar, handler));
-				
-				
 				
 			}
 			
@@ -103,6 +64,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			if(this.mouseOver(mx, my, 150, 250, 200, 55)){
 				juego.estadoJuego = Juego.ESTADO.Ayuda;
 				AudioPlayer.getSound("click").play();
+				mvs.setCorrer(false);
 				
 				
 			}
@@ -112,6 +74,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			if(this.mouseOver(mx, my, 150, 325, 200, 55)){
 				juego.estadoJuego = Juego.ESTADO.Creditos;
 				AudioPlayer.getSound("click").play();
+				mvs.setCorrer(false);
 				
 			}
 			
@@ -141,27 +104,15 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		
 		//Regresar al menu
 		if(juego.estadoJuego == Juego.ESTADO.GameOver) {
-			
+			mvs.setCorrer(false);
 			//Detener clase con hilo
-			//mv.stop();
-			//mvs.stop();
-			
-			//mvs.interrupt(); 
-			try {
-				mvs.join();
-			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			//mvs.stop();
-			//mvs.destroy();
 	
 			if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
 				AudioPlayer.getSound("click").play();
 				juego.estadoJuego = Juego.ESTADO.Menu;
 				hud.setNivel(1);
 				hud.setDistancia(0);
-				mvs.interrupt();
+				mvs.setCorrer(false);
 			}
 		}
 		
