@@ -82,6 +82,7 @@ public class Jugador extends GameObject implements ImageObserver{
 	}
 	
 	public void setCarro(String marca) {
+		/*
 		if (marca == "ferrari" ) {
 			//this.carro = new ImageIcon("ferrari_carro-removebg.png").getImage();
 			this.nombre_carro = "ferrari_carro-removebg.png";
@@ -94,6 +95,8 @@ public class Jugador extends GameObject implements ImageObserver{
 			//this.carro = new ImageIcon("ferrari_carro-removebg.png").getImage();
 			this.nombre_carro = "ferrari_carro-removebg.png";
 		}
+		*/
+		this.nombre_carro = marca;
 		
 	}
 

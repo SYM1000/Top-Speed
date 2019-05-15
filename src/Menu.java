@@ -149,6 +149,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				AudioPlayer.getSound("click").play();
 				JOptionPane.showMessageDialog(null, "Lamborghini seleccionado");
 				//jugador.setCarro("lamborghini");
+				jugador.setCarro("lambo_carro.jpg");
 				
 			}
 			
