@@ -135,10 +135,12 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			}
 		}
 		
+		
 		if(juego.estadoJuego == Juego.ESTADO.Skins) {	
 			//Ferrari
 			if(this.mouseOver(mx, my, 110, 115, 123, 252)) {
 				AudioPlayer.getSound("click").play();
+				//Repdroducir sonido de motor de ferrari
 				JOptionPane.showMessageDialog(null, "Ferrari seleccionado");
 				jugador.setCarro("ferrari");
 				
