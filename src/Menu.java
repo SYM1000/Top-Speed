@@ -135,7 +135,6 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			}
 		}
 		
-		
 		if(juego.estadoJuego == Juego.ESTADO.Skins) {	
 			//Ferrari
 			if(this.mouseOver(mx, my, 110, 115, 123, 252)) {
@@ -149,6 +148,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			//Lamborghini
 			}else if(this.mouseOver(mx, my, 260, 115, 123, 252)) {
 				AudioPlayer.getSound("click").play();
+				//Repdroducir sonido de motor de Lamborghini
 				JOptionPane.showMessageDialog(null, "Lamborghini seleccionado");
 				//jugador.setCarro("lamborghini");
 				jugador.setCarro("lambo_carro.jpg");
