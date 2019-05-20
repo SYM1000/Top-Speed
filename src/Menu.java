@@ -135,6 +135,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			}
 		}
 		
+		//En prubas y mejoras continuas. No está terminado
 		if(juego.estadoJuego == Juego.ESTADO.Skins) {	
 			//Ferrari
 			if(this.mouseOver(mx, my, 110, 115, 123, 252)) {
