@@ -27,9 +27,13 @@ public class AudioPlayer{
 			soundMap.put("arrancar", new Sound("MotorArrancar.wav"));
 			soundMap.put("claxon", new Sound("claxon.wav"));
 			soundMap.put("gameover", new Sound("gameover.wav"));
+			//Agregar sonido del arranque del motor del ferrari y lambo al ser seleccionados
+			//Agregar sonido del motoro mientras se está avanzando
+			
 			
 			//Agregar la musica
 			musicMap.put("music", new Music("intro.wav"));
+			//Posiblemente agregar musica extra
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}

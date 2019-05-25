@@ -13,6 +13,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 
 //Clase para crear el menu del juego
 public class Menu extends MouseAdapter implements ImageObserver {
@@ -20,16 +22,21 @@ public class Menu extends MouseAdapter implements ImageObserver {
 	public Juego juego;
 	public Handler handler;
 	private HUD hud;
-	private Image logo, teclas;
+	private Jugador jugador;
+	private Image logo, teclas, ferrari, lamborghini;
+	
 	private moverLinea mvs;
 	private ThreadLocalRandom randomNum;
 
-	public Menu(Juego juego, Handler handler, HUD hud) {
+	public Menu(Juego juego, Handler handler, HUD hud, Jugador jugador) {
 		this.juego = juego;
 		this.handler = handler;
 		this.hud = hud;
+		this.jugador = jugador;
 		this.logo = new ImageIcon("logo.png").getImage();
 		this.teclas =  new ImageIcon("teclas.png").getImage();
+		this.ferrari =  new ImageIcon("ferrari_carro-removebg.png").getImage();
+		this.lamborghini = new ImageIcon("lambo_carro.jpg").getImage();
 		this.randomNum = ThreadLocalRandom.current();
 		moverLinea mvs = new moverLinea(this);
 		this.mvs = mvs;
@@ -79,6 +86,14 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			if(this.mouseOver(mx, my, 150, 400, 200, 55)){
 				System.exit(1);
 			}
+			
+			
+			//Boton: Skins
+			if(this.mouseOver(mx, my, 380, 175, 100, 55)){
+				juego.estadoJuego = Juego.ESTADO.Skins;
+				AudioPlayer.getSound("click").play();
+			}
+			
 		}
 		
 		//Regresar en Ayuda
@@ -99,6 +114,15 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			}
 		}
 		
+		//Regresar en creditos
+			if(juego.estadoJuego == Juego.ESTADO.Skins) {
+				if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
+					AudioPlayer.getSound("click").play();
+					juego.estadoJuego = Juego.ESTADO.Menu;
+					return;
+				}
+			}
+		
 		//Regresar al menu
 		if(juego.estadoJuego == Juego.ESTADO.GameOver) {
 			//Detener clase con hilo
@@ -111,6 +135,28 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			}
 		}
 		
+		//En prubas y mejoras continuas. No está terminado
+		if(juego.estadoJuego == Juego.ESTADO.Skins) {	
+			//Ferrari
+			if(this.mouseOver(mx, my, 110, 115, 123, 252)) {
+				AudioPlayer.getSound("click").play();
+				//Repdroducir sonido de motor de ferrari
+				JOptionPane.showMessageDialog(null, "Ferrari seleccionado");
+				jugador.setCarro("ferrari");
+				
+				
+				
+			//Lamborghini
+			}else if(this.mouseOver(mx, my, 260, 115, 123, 252)) {
+				AudioPlayer.getSound("click").play();
+				//Repdroducir sonido de motor de Lamborghini
+				JOptionPane.showMessageDialog(null, "Lamborghini seleccionado");
+				//jugador.setCarro("lamborghini");
+				jugador.setCarro("lambo_carro.jpg");
+				
+			}
+			
+		}	
 	}
 	
 	public void mouseReleased(MouseEvent e) {
@@ -139,6 +185,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		if(juego.estadoJuego == Juego.ESTADO.Menu) {	
 			Font fnt = new Font("arial", 1,50);
 			Font fnt2 = new Font("arial", 1,30);
+			Font fnt3 = new Font("arial", 1,25);
 			
 			g.setFont(fnt);
 			g.setColor(Color.white);
@@ -160,6 +207,10 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			
 			g.drawRect(150, 400, 200, 55);
 			g.drawString("SALIR", 205, 440);
+			
+			g.setFont(fnt3);
+			g.drawRect(380, 175, 100, 55);
+			g.drawString("SKINS", 390, 210);
 			
 		}else if(juego.estadoJuego == Juego.ESTADO.Ayuda) {
 			Font fnt = new Font("arial", 1,50);
@@ -215,6 +266,32 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			g.setFont(fnt2);
 			g.drawString("Distancia Recorrida: ", 110, 215);
 			g.drawString(hud.getDistancia() + " metros", 180, 250);
+			
+			//Regresar
+			g.setFont(fnt2);
+			g.drawRect(150, 400, 200, 55);
+			g.drawString("Ir al Menu", 185, 437);
+			
+		} else if(juego.estadoJuego == Juego.ESTADO.Skins) {
+			//this.mvs.detener();
+			Font fnt = new Font("arial", 1,50);
+			Font fnt2 = new Font("arial", 1,30);
+			Font fnt3 = new Font("arial", 1,20);
+			
+			g.setFont(fnt);
+			g.setColor(Color.white);
+			g.drawString("SKINS", 180, 75);
+			
+			g.setFont(fnt3);
+			g.drawString("Escoge el carro con el que quieras correr", 65, 100);
+			
+			//Escoger ferrari
+			g.drawRect(110, 115, 123, 252);
+			g.drawImage(this.ferrari, 130, 150, 88, 180, this); //Tamaño original ferrari: 35, 72 (ancho y alto)
+			
+			//Escoger lamborghini
+			g.drawRect(260, 115, 123, 252);
+			g.drawImage(this.lamborghini, 280, 150, 88, 180, this);	
 			
 			//Regresar
 			g.setFont(fnt2);
