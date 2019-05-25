@@ -16,13 +16,9 @@ import javax.swing.JOptionPane;
 public class Jugador extends GameObject implements ImageObserver{
 	
 	private Image carro;
-	
-	//private Image carro2;
-	
 	private int ancho;
 	private int alto;
 	
-	//public String nombre_carro;
 	
 	private BufferedImage player_image;
 	
@@ -31,15 +27,16 @@ public class Jugador extends GameObject implements ImageObserver{
 
 	public Jugador(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
-		this.carro = new ImageIcon("ferrari_carro-removebg.png").getImage();	
+		//this.carro = new ImageIcon("ferrari_carro-removebg.png").getImage();	
 		this.ancho = 35;
 		this.alto = 72;
 		this.handler = handler;
 		
+		//this.carro = Juego.imagen_ferrari;
 		
-		SpriteSheet ss = new SpriteSheet(Juego.sprite_sheet);
 		
-		this.player_image =  ss.grabImage("");
+		//SpriteSheet ss = new SpriteSheet(Juego.sprite_sheet);	
+		//this.player_image =  ss.grabImage("");
 		
 	}
 

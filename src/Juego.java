@@ -10,6 +10,7 @@ import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.awt.image.BufferStrategy;
@@ -45,9 +46,18 @@ public class Juego extends Canvas implements Runnable{
 	//El estado en el que inicia el juego por default
 	public static ESTADO estadoJuego = ESTADO.Menu;
 	
-	public static BufferedImage sprite_sheet;
+	//public BufferedImage sprite_sheet;
+	public static BufferedImage imagen_ferrari;
+	public static BufferedImage imagen_lamborghini;
 	
 	public Juego() {
+		//Cambiar de sprites
+				BufferedImageLoader loader  = new BufferedImageLoader();
+				
+				//sprite_sheet = loader.loadImage("/sprite_sheet.png");
+				
+				imagen_ferrari = loader.loadImage("ferrari_carro-removebg.png");
+				imagen_lamborghini = loader.loadImage("lambo_carro.jpg");
 		this.handler = new Handler();
 		this.hud = new HUD();
 		this.menu = new Menu(this, handler, hud, jugador);
@@ -56,19 +66,18 @@ public class Juego extends Canvas implements Runnable{
 		new Ventana(ANCHO, ALTO, "Top Speed", this);
 		
 		
-		//Cambiar de sprites
-		BufferedImageLoader loader  = new BufferedImageLoader();
-		
-		sprite_sheet = loader.loadImage("/sprite_sheet.png");
-		
-		//-------------
-		
 		this.hilo = new Thread(this);
 		this.spawner =  new Spawn(handler, hud, this);
 		this.calle = new ImageIcon("Calle2.png").getImage();
 		this.fondo = new ImageIcon("fondo7.gif").getImage();		
 		AudioPlayer.load(); //Cargar la musica
 		AudioPlayer.getMusic("music").loop(); //Reproducir la musica en un loop cuando inicia el juego	
+		
+		/*
+		imagen_ferrari = loader.loadImage("/ferrari_carro-removebg.png");
+		imagen_lamborghini = loader.loadImage("/lambo_carro.jpg");
+		*/
+		//-------------
 	}
 	
 	//iniciar el juego
