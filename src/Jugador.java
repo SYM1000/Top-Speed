@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import java.util.Random;
 
@@ -15,23 +16,32 @@ import javax.swing.JOptionPane;
 public class Jugador extends GameObject implements ImageObserver{
 	
 	private Image carro;
-	private Image carro2;
+	
+	//private Image carro2;
+	
 	private int ancho;
 	private int alto;
-	public String nombre_carro;
+	
+	//public String nombre_carro;
+	
+	private BufferedImage player_image;
 	
 	Random r = new Random();
 	Handler handler;
 
 	public Jugador(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
-		this.nombre_carro = "ferrari_carro-removebg.png";
-		this.carro = new ImageIcon(this.nombre_carro).getImage();
-		this.carro2 = new ImageIcon("lambo_carro.png").getImage();
+		//this.nombre_carro = "ferrari_carro-removebg.png";
+		this.carro = new ImageIcon("ferrari_carro-removebg.png").getImage();
+		//this.carro2 = new ImageIcon("lambo_carro.png").getImage();
 		
 		this.ancho = 35;
 		this.alto = 72;
 		this.handler = handler;
+		
+		SpriteSheet ss = new SpriteSheet(Juego.sprite_sheet);
+		
+		this.player_image =  ss.grabImage("");
 	}
 
 	public Rectangle getBounds(){
@@ -76,7 +86,7 @@ public class Jugador extends GameObject implements ImageObserver{
 		if(this.nombre_carro == "ferrari_carro-removebg.png") {
 			g.drawImage(this.carro, (int)x, (int)y, this.ancho, this.alto, this);	
 		} else if (this.nombre_carro == "lambo_carro.jpg") {
-			g.drawImage(this.carro2, (int)x, (int)y, this.ancho, this.alto, this);
+			//g.drawImage(this.carro2, (int)x, (int)y, this.ancho, this.alto, this);
 		}
 		
 	}
