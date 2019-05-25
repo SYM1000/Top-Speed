@@ -31,17 +31,16 @@ public class Jugador extends GameObject implements ImageObserver{
 
 	public Jugador(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
-		//this.nombre_carro = "ferrari_carro-removebg.png";
-		this.carro = new ImageIcon("ferrari_carro-removebg.png").getImage();
-		//this.carro2 = new ImageIcon("lambo_carro.png").getImage();
-		
+		this.carro = new ImageIcon("ferrari_carro-removebg.png").getImage();	
 		this.ancho = 35;
 		this.alto = 72;
 		this.handler = handler;
 		
+		
 		SpriteSheet ss = new SpriteSheet(Juego.sprite_sheet);
 		
 		this.player_image =  ss.grabImage("");
+		
 	}
 
 	public Rectangle getBounds(){
@@ -81,35 +80,9 @@ public class Jugador extends GameObject implements ImageObserver{
 
 	public void render(Graphics g) {
 		Graphics2D g2d = (Graphics2D) g;
-		
-		//Dibujar la imagen del objeto (carrito)
-		if(this.nombre_carro == "ferrari_carro-removebg.png") {
-			g.drawImage(this.carro, (int)x, (int)y, this.ancho, this.alto, this);	
-		} else if (this.nombre_carro == "lambo_carro.jpg") {
-			//g.drawImage(this.carro2, (int)x, (int)y, this.ancho, this.alto, this);
+		g.drawImage(this.carro, (int)x, (int)y, this.ancho, this.alto, this);	
 		}
 		
-	}
-	
-	public void setCarro(String marca) {
-		/*
-		if (marca == "ferrari" ) {
-			//this.carro = new ImageIcon("ferrari_carro-removebg.png").getImage();
-			this.nombre_carro = "ferrari_carro-removebg.png";
-			
-		} else if(marca == "lamborghini") {
-			//this.carro = new ImageIcon("lambo_carro.jpg").getImage();
-			this.nombre_carro = "lambo_carro.jpg";
-			
-		} else {
-			//this.carro = new ImageIcon("ferrari_carro-removebg.png").getImage();
-			this.nombre_carro = "ferrari_carro-removebg.png";
-		}
-		*/
-		this.nombre_carro = marca;
-		
-	}
-
 	
 	//Arreglar cunado se agrega una imagen
 	public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {

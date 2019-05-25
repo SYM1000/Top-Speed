@@ -142,7 +142,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				AudioPlayer.getSound("click").play();
 				//Repdroducir sonido de motor de ferrari
 				JOptionPane.showMessageDialog(null, "Ferrari seleccionado");
-				jugador.setCarro("ferrari");
+				//Camiar la imgagen del jugador a un ferrari
 				
 				
 				
@@ -151,8 +151,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				AudioPlayer.getSound("click").play();
 				//Repdroducir sonido de motor de Lamborghini
 				JOptionPane.showMessageDialog(null, "Lamborghini seleccionado");
-				//jugador.setCarro("lamborghini");
-				jugador.setCarro("lambo_carro.jpg");
+				//Camiar la imgagen del jugador a un lamborghini
 				
 			}
 			

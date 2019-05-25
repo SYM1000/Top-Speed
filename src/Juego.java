@@ -61,6 +61,7 @@ public class Juego extends Canvas implements Runnable{
 		
 		sprite_sheet = loader.loadImage("/sprite_sheet.png");
 		
+		//-------------
 		
 		this.hilo = new Thread(this);
 		this.spawner =  new Spawn(handler, hud, this);
