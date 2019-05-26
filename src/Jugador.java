@@ -26,6 +26,8 @@ public class Jugador extends GameObject implements ImageObserver{
 	
 	Random r = new Random();
 	Handler handler;
+	
+	
 
 	public Jugador(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
@@ -38,9 +40,10 @@ public class Jugador extends GameObject implements ImageObserver{
 		//this.carro = Juego.imagen_ferrari;
 		
 	}
-	
-	public void setBolFerrari(boolean valor) {
-		this.bol_ferrari = valor;
+
+	public static void setBolFerrari(boolean valor) {
+		//this.bol_ferrari = valor;
+		System.out.println("valor");
 	}
 	
 	public void setBolLamborghini(boolean valor) {

@@ -23,6 +23,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 	public Handler handler;
 	private HUD hud;
 	private Jugador jugador;
+	private Jugador player;
 	private Image logo, teclas, ferrari, lamborghini;
 	
 	private moverLinea mvs;
@@ -33,6 +34,8 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		this.handler = handler;
 		this.hud = hud;
 		this.jugador = jugador;
+		this.player = new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler);
+		this.player = jugador;
 		this.logo = new ImageIcon("logo.png").getImage();
 		this.teclas =  new ImageIcon("teclas.png").getImage();
 		this.ferrari =  new ImageIcon("ferrari_carro-removebg.png").getImage();
@@ -59,8 +62,10 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				
 				//handler.addObject(new Linea(Juego.ANCHO/2 - 19, -400 , ID.Linea, handler)); //Agregar una linea para debuggear
 				
-				//Agregar el jugador y unos enemigos al inico del juego		
-				handler.addObject(new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario	
+				//Agregar el jugador y unos enemigos al inico del juego
+				
+				//handler.addObject(new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario
+				
 				handler.addObject(new SlowCar(Juego.ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
 				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), -100, ID.SlowCar, handler));
 				
@@ -136,7 +141,9 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		}
 		
 		//En prubas y mejoras continuas. No está terminado
-		if(juego.estadoJuego == Juego.ESTADO.Skins) {	
+		if(juego.estadoJuego == Juego.ESTADO.Skins) {
+			
+			
 			//Ferrari
 			if(this.mouseOver(mx, my, 110, 115, 123, 252)) {
 				AudioPlayer.getSound("click").play();
@@ -156,6 +163,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				//Repdroducir sonido de motor de Lamborghini
 				//---------
 				//Camiar la imgagen del jugador a un lamborghini
+				handler.addObject(new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario	
 				jugador.setBolFerrari(false);
 				jugador.setBolLamborghini(true);
 				JOptionPane.showMessageDialog(null, "Lamborghini seleccionado");

@@ -57,6 +57,10 @@ public class Juego extends Canvas implements Runnable{
 		
 		this.handler = new Handler();
 		this.hud = new HUD();
+		
+		
+		jugador = new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler);
+		
 		this.menu = new Menu(this, handler, hud, jugador);
 		this.addKeyListener(new KeyInput(handler));
 		this.addMouseListener(menu);
