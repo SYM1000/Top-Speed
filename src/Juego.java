@@ -46,18 +46,15 @@ public class Juego extends Canvas implements Runnable{
 	//El estado en el que inicia el juego por default
 	public static ESTADO estadoJuego = ESTADO.Menu;
 	
-	//public BufferedImage sprite_sheet;
 	public static BufferedImage imagen_ferrari;
 	public static BufferedImage imagen_lamborghini;
 	
 	public Juego() {
 		//Cambiar de sprites
-				BufferedImageLoader loader  = new BufferedImageLoader();
-				
-				//sprite_sheet = loader.loadImage("/sprite_sheet.png");
-				
-				imagen_ferrari = loader.loadImage("ferrari_carro-removebg.png");
-				imagen_lamborghini = loader.loadImage("lambo_carro.jpg");
+		BufferedImageLoader loader  = new BufferedImageLoader();
+		imagen_ferrari = loader.loadImage("ferrari_carro-removebg.png");
+		imagen_lamborghini = loader.loadImage("lambo_carro.jpg");
+		
 		this.handler = new Handler();
 		this.hud = new HUD();
 		this.menu = new Menu(this, handler, hud, jugador);
@@ -73,11 +70,6 @@ public class Juego extends Canvas implements Runnable{
 		AudioPlayer.load(); //Cargar la musica
 		AudioPlayer.getMusic("music").loop(); //Reproducir la musica en un loop cuando inicia el juego	
 		
-		/*
-		imagen_ferrari = loader.loadImage("/ferrari_carro-removebg.png");
-		imagen_lamborghini = loader.loadImage("/lambo_carro.jpg");
-		*/
-		//-------------
 	}
 	
 	//iniciar el juego
@@ -175,7 +167,7 @@ public class Juego extends Canvas implements Runnable{
 			hud.render(g);
 		}else if(estadoJuego == ESTADO.Menu || estadoJuego == ESTADO.Ayuda || estadoJuego == ESTADO.Creditos || estadoJuego == ESTADO.Skins || this.estadoJuego == ESTADO.GameOver) {
 			g.drawImage(this.fondo, 0, 0, Juego.ANCHO, Juego.ALTO, this);
-			menu.render(g);		
+			menu.render(g);
 		}
 		
 		g.dispose();

@@ -48,7 +48,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		int mx = e.getX();
 		int my = e.getY();
 		if (juego.estadoJuego == Juego.ESTADO.Menu) {
-			
+				
 			//Boton: JUGAR
 			if(this.mouseOver(mx, my, 150, 175, 200, 55)) {
 				//Aquí inicia el juego
@@ -141,8 +141,12 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			if(this.mouseOver(mx, my, 110, 115, 123, 252)) {
 				AudioPlayer.getSound("click").play();
 				//Repdroducir sonido de motor de ferrari
-				JOptionPane.showMessageDialog(null, "Ferrari seleccionado");
+				//---------
 				//Camiar la imgagen del jugador a un ferrari
+				//jugador.carro = Juego.imagen_ferrari;
+				jugador.setBolFerrari(true);
+				jugador.setBolLamborghini(false);
+				JOptionPane.showMessageDialog(null, "Ferrari seleccionado");
 				
 				
 				
@@ -150,8 +154,12 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			}else if(this.mouseOver(mx, my, 260, 115, 123, 252)) {
 				AudioPlayer.getSound("click").play();
 				//Repdroducir sonido de motor de Lamborghini
-				JOptionPane.showMessageDialog(null, "Lamborghini seleccionado");
+				//---------
 				//Camiar la imgagen del jugador a un lamborghini
+				jugador.setBolFerrari(false);
+				jugador.setBolLamborghini(true);
+				JOptionPane.showMessageDialog(null, "Lamborghini seleccionado");
+				
 				
 			}
 			
