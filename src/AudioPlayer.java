@@ -28,11 +28,11 @@ public class AudioPlayer{
 			soundMap.put("claxon", new Sound("claxon.wav"));
 			soundMap.put("gameover", new Sound("gameover.wav"));
 			
-			soundMap.put("audiStart", new Sound("audiStart.wav"));
-			soundMap.put("startLambo", new Sound("lamboStart.wav"));
+			//soundMap.put("audiStart", new Sound("audiStart.wav"));
+			//soundMap.put("startLambo", new Sound("lamboStart.wav"));
 			/*Cargar sonido audi
 			 * 				Bugatti
-			 * 				Viper
+			 * 				Vipera
 			 * 				Lotus
 			 * 				Koenisseg
 			 * 				Mercedes			

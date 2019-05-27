@@ -168,7 +168,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			}else if(this.mouseOver(mx, my, 260, 115, 123, 252)) {
 				AudioPlayer.getSound("click").play();
 				//Repdroducir sonido de motor de Lamborghini
-				AudioPlayer.getSound("startLamborghini").play();
+				//AudioPlayer.getSound("startLamborghini").play();    FALTA CORREGIR AUDIO <-----------------
 				//Camiar la imgagen del jugador a un lamborghini		
 				jugador.setBolFerrari(false);
 				jugador.setBolLamborghini(true);

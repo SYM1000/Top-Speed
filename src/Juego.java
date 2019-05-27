@@ -48,6 +48,12 @@ public class Juego extends Canvas implements Runnable{
 	
 	public static BufferedImage imagen_ferrari;
 	public static BufferedImage imagen_lamborghini;
+	public static BufferedImage imagen_audi;
+	public static BufferedImage imagen_bugatti;
+	public static BufferedImage imagen_viper;
+	public static BufferedImage imagen_lotus;
+	public static BufferedImage imagen_koenis;
+	public static BufferedImage imagen_mercedes;
 	//Aqui podemos agregar mas imagenes para los carros
 	
 	public Juego() {
@@ -55,6 +61,12 @@ public class Juego extends Canvas implements Runnable{
 		BufferedImageLoader loader  = new BufferedImageLoader();
 		imagen_ferrari = loader.loadImage("ferrari_carro-removebg.png");
 		imagen_lamborghini = loader.loadImage("lambo_carro.jpg");
+		imagen_audi = loader.loadImage("Audi.png");
+		imagen_bugatti = loader.loadImage("Bugatti.png");
+		imagen_viper = loader.loadImage("Viper.png");
+		imagen_lotus = loader.loadImage("Lotus.png");
+		imagen_koenis = loader.loadImage("Koenis.png");
+		imagen_mercedes = loader.loadImage("Mercedes.png");
 		
 		this.handler = new Handler();
 		this.hud = new HUD();

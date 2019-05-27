@@ -19,7 +19,13 @@ public class Jugador extends GameObject implements ImageObserver{
 	private int ancho;
 	private int alto;
 	private boolean bol_ferrari, 
-					bol_lamborghini;
+					bol_lamborghini,
+     				bol_audi,
+     				bol_bugatti,
+     				bol_viper,
+     				bol_lotus,
+     				bol_koenis,
+     				bol_mercedes;
 	
 	
 	private BufferedImage player_image;
@@ -106,6 +112,7 @@ public class Jugador extends GameObject implements ImageObserver{
 			this.carro = Juego.imagen_ferrari;
 			
 		}//AGREGAR MAS CONDICIONALES
+		
 		
 		g.drawImage(this.carro, (int)x, (int)y, this.ancho, this.alto, this);	
 		}
