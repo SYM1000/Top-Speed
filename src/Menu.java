@@ -174,13 +174,13 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				jugador.setBolLotus(false);
 				jugador.setBolKoenis(false);
 				jugador.setBolMercedes(false);
-				JOptionPane.showMessageDialog(null, "Ferrari seleccionado");
+				//JOptionPane.showMessageDialog(null, "Ferrari seleccionado");
 				
 			//Lamborghini
 			}else if(this.mouseOver(mx, my, 160, 90, 70, 144)) {     //<---------------------
 				AudioPlayer.getSound("click").play();
 				//Repdroducir sonido de motor de Lamborghini
-				//AudioPlayer.getSound("startLamborghini").play();    FALTA CORREGIR AUDIO <-----------------
+				AudioPlayer.getSound("lamboStart").play(); 
 				//Camiar la imgagen del jugador a un lamborghini		
 				jugador.setBolFerrari(false);
 				jugador.setBolLamborghini(true);
@@ -190,14 +190,14 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				jugador.setBolLotus(false);
 				jugador.setBolKoenis(false);
 				jugador.setBolMercedes(false);
-				JOptionPane.showMessageDialog(null, "Lamborghini seleccionado");	
+				//JOptionPane.showMessageDialog(null, "Lamborghini seleccionado");	
 			}
 			
 			//Audi
 			else if(this.mouseOver(mx, my, 270, 90, 70, 144)) {
 				AudioPlayer.getSound("click").play();
 				//Repdroducir sonido de arranque del carro
-				
+				AudioPlayer.getSound("audiStart").play();
 				//Camiar la imgagen del jugador a un audi		
 				jugador.setBolFerrari(false);
 				jugador.setBolLamborghini(false);
@@ -207,14 +207,14 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				jugador.setBolLotus(false);
 				jugador.setBolKoenis(false);
 				jugador.setBolMercedes(false);
-				JOptionPane.showMessageDialog(null, "Audi R8 seleccionado");
+				//JOptionPane.showMessageDialog(null, "Audi R8 seleccionado");
 			}
 			
 			//Buggatti
 			else if(this.mouseOver(mx, my, 380, 90, 70, 144)) {
 				AudioPlayer.getSound("click").play();
 				//Repdroducir sonido de arranque del carro
-				
+				AudioPlayer.getSound("bugattiStart").play();
 				//Camiar la imgagen del jugador a un carro		
 				jugador.setBolFerrari(false);
 				jugador.setBolLamborghini(false);
@@ -224,14 +224,14 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				jugador.setBolLotus(false);
 				jugador.setBolKoenis(false);
 				jugador.setBolMercedes(false);
-				JOptionPane.showMessageDialog(null, "Bugatti Veyron seleccionado");
+				//JOptionPane.showMessageDialog(null, "Bugatti Veyron seleccionado");
 			}
 			
 			//Viper
 			else if(this.mouseOver(mx, my, 50, 250, 70, 144)) {
 				AudioPlayer.getSound("click").play();
 				//Repdroducir sonido de arranque del carro
-				
+				AudioPlayer.getSound("viperStart").play();
 				//Camiar la imgagen del jugador a un carro		
 				jugador.setBolFerrari(false);
 				jugador.setBolLamborghini(false);
@@ -241,7 +241,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				jugador.setBolLotus(false);
 				jugador.setBolKoenis(false);
 				jugador.setBolMercedes(false);
-				JOptionPane.showMessageDialog(null, "Dodge Viper seleccionado");
+				//JOptionPane.showMessageDialog(null, "Dodge Viper seleccionado");
 			}
 	
 			
@@ -249,7 +249,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			else if(this.mouseOver(mx, my, 160, 250, 70, 144)) {
 				AudioPlayer.getSound("click").play();
 				//Repdroducir sonido de arranque del carro
-				
+				AudioPlayer.getSound("lotusStart").play();
 				//Camiar la imgagen del jugador a un carro		
 				jugador.setBolFerrari(false);
 				jugador.setBolLamborghini(false);
@@ -259,14 +259,14 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				jugador.setBolLotus(true);
 				jugador.setBolKoenis(false);
 				jugador.setBolMercedes(false);
-				JOptionPane.showMessageDialog(null, "Lotus seleccionado");
+				//JOptionPane.showMessageDialog(null, "Lotus seleccionado");
 			}
 			
 			//Koenisseg
 			else if(this.mouseOver(mx, my, 270, 250, 70, 144)) {
 				AudioPlayer.getSound("click").play();
 				//Repdroducir sonido de arranque del carro
-				
+				AudioPlayer.getSound("koenisStart").play();
 				//Camiar la imgagen del jugador a un carro		
 				jugador.setBolFerrari(false);
 				jugador.setBolLamborghini(false);
@@ -276,15 +276,15 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				jugador.setBolLotus(false);
 				jugador.setBolKoenis(true);
 				jugador.setBolMercedes(false);
-				JOptionPane.showMessageDialog(null, "Koenigsegg seleccionado");
+				//JOptionPane.showMessageDialog(null, "Koenigsegg seleccionado");
 			}
 			
 			//Mercedes
 			else if(this.mouseOver(mx, my, 380, 250, 70, 144)) {
 				AudioPlayer.getSound("click").play();
 				//Repdroducir sonido de arranque del carro
-				
-				//Camiar la imgagen del jugador a un audi		
+				AudioPlayer.getSound("mercedesStart").play();
+				//Camiar la imgagen del jugador a un carro		
 				jugador.setBolFerrari(false);
 				jugador.setBolLamborghini(false);
 				jugador.setBolAudi(false);
@@ -293,7 +293,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				jugador.setBolLotus(false);
 				jugador.setBolKoenis(false);
 				jugador.setBolMercedes(true);
-				JOptionPane.showMessageDialog(null, "Mercedes SLS seleccionado");
+				//JOptionPane.showMessageDialog(null, "Mercedes SLS seleccionado");
 			}
 			
 		}	

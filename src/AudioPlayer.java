@@ -27,13 +27,15 @@ public class AudioPlayer{
 			soundMap.put("arrancar", new Sound("MotorArrancar.wav"));
 			soundMap.put("claxon", new Sound("claxon.wav"));
 			soundMap.put("gameover", new Sound("gameover.wav"));
+			soundMap.put("lamboStart", new Sound("lamboStart.ogg"));
+			soundMap.put("audiStart", new Sound("audistart.ogg"));
+			soundMap.put("bugattiStart", new Sound("bugattiStart.wav"));
+			soundMap.put("viperStart", new Sound("viperStart.wav"));
+			soundMap.put("lotusStart", new Sound("lotusStart.wav"));
+			soundMap.put("koenisStart", new Sound("koenisStart.wav"));
+			soundMap.put("mercedesStart", new Sound("mercedesStart.wav"));
 			
-			//soundMap.put("audiStart", new Sound("audiStart.wav"));
-			//soundMap.put("startLambo", new Sound("lamboStart.wav"));
-			/*Cargar sonido audi
-			 * 				Bugatti
-			 * 				Vipera
-			 * 				Lotus
+			/*Cargar sonido
 			 * 				Koenisseg
 			 * 				Mercedes			
 			*/
