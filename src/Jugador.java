@@ -38,11 +38,17 @@ public class Jugador extends GameObject implements ImageObserver{
 	public Jugador(int x, int y, ID id, Handler handler) {
 		super(x, y, id);
 		//this.carro = new ImageIcon("ferrari_carro-removebg.png").getImage();	
-		this.ancho = 35;
-		this.alto = 72;
+		this.ancho = 35; //original: 35
+		this.alto = 72; //original: 72
 		this.handler = handler;
 		this.bol_ferrari = false;
 		this.bol_lamborghini = false;
+		this.bol_audi = false;
+		this.bol_bugatti = false;
+		this.bol_viper = false;
+		this.bol_lotus =  false;
+		this.bol_koenis = false;
+		this.bol_mercedes = false;
 		//this.carro = Juego.imagen_ferrari;
 		
 	}
@@ -53,6 +59,30 @@ public class Jugador extends GameObject implements ImageObserver{
 	
 	public void setBolLamborghini(boolean valor) {
 		this.bol_lamborghini = valor;
+	}
+	
+	public void setBolAudi(boolean valor) {
+		this.bol_audi = valor;
+	}
+	
+	public void setBolBugatti(boolean valor) {
+		this.bol_bugatti = valor;
+	}
+	
+	public void setBolViper(boolean valor) {
+		this.bol_viper = valor;
+	}
+	
+	public void setBolLotus(boolean valor) {
+		this.bol_lotus = valor;
+	}
+	
+	public void setBolKoenis(boolean valor) {
+		this.bol_koenis = valor;
+	}
+	
+	public void setBolMercedes(boolean valor) {
+		this.bol_mercedes = valor;
 	}
 	
 	public boolean getBolFerrari() {
@@ -108,10 +138,30 @@ public class Jugador extends GameObject implements ImageObserver{
 		}else if (this.bol_ferrari == false && this.bol_lamborghini == true) {
 			this.carro = Juego.imagen_lamborghini;
 			
-		}else if(this.bol_ferrari == false && this.bol_lamborghini == false) {
+		//El carro por default	
+		}else if(this.bol_ferrari == false && this.bol_lamborghini == false && this.bol_audi == false && this.bol_bugatti == false && this.bol_viper == false && this.bol_lotus == false && this.bol_koenis == false && this.bol_mercedes == false) {
 			this.carro = Juego.imagen_ferrari;
+		
+			//Extras
+		}else if(this.bol_audi == true) {
+			this.carro = Juego.imagen_audi;
 			
-		}//AGREGAR MAS CONDICIONALES
+		}else if(this.bol_bugatti == true) {
+			this.carro = Juego.imagen_bugatti;
+		
+		}else if(this.bol_viper == true) {
+			this.carro = Juego.imagen_viper;
+		
+		}else if(this.bol_lotus == true) {
+			this.carro = Juego.imagen_lotus;
+		
+		}else if(this.bol_koenis == true) {
+			this.carro = Juego.imagen_koenis;
+		
+		}else if(this.bol_mercedes == true) {
+			this.carro = Juego.imagen_mercedes;
+		
+		}
 		
 		
 		g.drawImage(this.carro, (int)x, (int)y, this.ancho, this.alto, this);	

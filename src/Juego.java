@@ -85,7 +85,7 @@ public class Juego extends Canvas implements Runnable{
 		this.calle = new ImageIcon("Calle2.png").getImage();
 		this.fondo = new ImageIcon("fondo7.gif").getImage();		
 		AudioPlayer.load(); //Cargar la musica
-		AudioPlayer.getMusic("music").loop(); //Reproducir la musica en un loop cuando inicia el juego	
+		//AudioPlayer.getMusic("music").loop(); //Reproducir la musica en un loop cuando inicia el juego	
 		
 	}
 	

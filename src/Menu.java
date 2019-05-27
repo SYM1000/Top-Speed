@@ -23,7 +23,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 	public Handler handler;
 	private HUD hud;
 	private Jugador jugador;
-	private Image logo, teclas, ferrari, lamborghini;
+	private Image logo, teclas, ferrari, lamborghini, audi, bugatti, viper, lotus, koenis, mercedes;
 	
 	private moverLinea mvs;
 	private ThreadLocalRandom randomNum;
@@ -37,6 +37,12 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		this.teclas =  new ImageIcon("teclas.png").getImage();
 		this.ferrari =  new ImageIcon("ferrari_carro-removebg.png").getImage();
 		this.lamborghini = new ImageIcon("lambo_carro.jpg").getImage();
+		this.audi =  new ImageIcon("Audi.png").getImage();
+		this.bugatti =  new ImageIcon("Bugatti.png").getImage();
+		this.viper =  new ImageIcon("Viper.png").getImage();
+		this.lotus =  new ImageIcon("Lotus.png").getImage();
+		this.koenis =  new ImageIcon("Koenis.png").getImage();
+		this.mercedes =  new ImageIcon("Mercedes.png").getImage();
 		this.randomNum = ThreadLocalRandom.current();
 		moverLinea mvs = new moverLinea(this);
 		this.mvs = mvs;
@@ -123,7 +129,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		
 		//Regresar en creditos
 			if(juego.estadoJuego == Juego.ESTADO.Skins) {
-				if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
+				if(this.mouseOver(mx, my, 150, 410, 200, 55)) {
 					AudioPlayer.getSound("click").play();
 					juego.estadoJuego = Juego.ESTADO.Menu;
 					return;
@@ -155,37 +161,140 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			*/
 			
 			//Ferrari
-			if(this.mouseOver(mx, my, 110, 115, 123, 252)) {
+			if(this.mouseOver(mx, my, 50, 90, 70, 144)) {      //  <--------------------
 				AudioPlayer.getSound("click").play();
 				//Repdroducir sonido de motor de ferrari
 				AudioPlayer.getSound("arrancar").play();
 				//Camiar la imgagen del jugador a un ferrari
 				jugador.setBolFerrari(true);
 				jugador.setBolLamborghini(false);
+				jugador.setBolAudi(false);
+				jugador.setBolBugatti(false);
+				jugador.setBolViper(false);
+				jugador.setBolLotus(false);
+				jugador.setBolKoenis(false);
+				jugador.setBolMercedes(false);
 				JOptionPane.showMessageDialog(null, "Ferrari seleccionado");
 				
 			//Lamborghini
-			}else if(this.mouseOver(mx, my, 260, 115, 123, 252)) {
+			}else if(this.mouseOver(mx, my, 160, 90, 70, 144)) {     //<---------------------
 				AudioPlayer.getSound("click").play();
 				//Repdroducir sonido de motor de Lamborghini
 				//AudioPlayer.getSound("startLamborghini").play();    FALTA CORREGIR AUDIO <-----------------
 				//Camiar la imgagen del jugador a un lamborghini		
 				jugador.setBolFerrari(false);
 				jugador.setBolLamborghini(true);
+				jugador.setBolAudi(false);
+				jugador.setBolBugatti(false);
+				jugador.setBolViper(false);
+				jugador.setBolLotus(false);
+				jugador.setBolKoenis(false);
+				jugador.setBolMercedes(false);
 				JOptionPane.showMessageDialog(null, "Lamborghini seleccionado");	
 			}
 			
 			//Audi
+			else if(this.mouseOver(mx, my, 270, 90, 70, 144)) {
+				AudioPlayer.getSound("click").play();
+				//Repdroducir sonido de arranque del carro
+				
+				//Camiar la imgagen del jugador a un audi		
+				jugador.setBolFerrari(false);
+				jugador.setBolLamborghini(false);
+				jugador.setBolAudi(true);
+				jugador.setBolBugatti(false);
+				jugador.setBolViper(false);
+				jugador.setBolLotus(false);
+				jugador.setBolKoenis(false);
+				jugador.setBolMercedes(false);
+				JOptionPane.showMessageDialog(null, "Audi R8 seleccionado");
+			}
 			
 			//Buggatti
+			else if(this.mouseOver(mx, my, 380, 90, 70, 144)) {
+				AudioPlayer.getSound("click").play();
+				//Repdroducir sonido de arranque del carro
+				
+				//Camiar la imgagen del jugador a un carro		
+				jugador.setBolFerrari(false);
+				jugador.setBolLamborghini(false);
+				jugador.setBolAudi(false);
+				jugador.setBolBugatti(true);
+				jugador.setBolViper(false);
+				jugador.setBolLotus(false);
+				jugador.setBolKoenis(false);
+				jugador.setBolMercedes(false);
+				JOptionPane.showMessageDialog(null, "Bugatti Veyron seleccionado");
+			}
 			
 			//Viper
+			else if(this.mouseOver(mx, my, 50, 250, 70, 144)) {
+				AudioPlayer.getSound("click").play();
+				//Repdroducir sonido de arranque del carro
+				
+				//Camiar la imgagen del jugador a un carro		
+				jugador.setBolFerrari(false);
+				jugador.setBolLamborghini(false);
+				jugador.setBolAudi(false);
+				jugador.setBolBugatti(false);
+				jugador.setBolViper(true);
+				jugador.setBolLotus(false);
+				jugador.setBolKoenis(false);
+				jugador.setBolMercedes(false);
+				JOptionPane.showMessageDialog(null, "Dodge Viper seleccionado");
+			}
+	
 			
 			//Lotus
+			else if(this.mouseOver(mx, my, 160, 250, 70, 144)) {
+				AudioPlayer.getSound("click").play();
+				//Repdroducir sonido de arranque del carro
+				
+				//Camiar la imgagen del jugador a un carro		
+				jugador.setBolFerrari(false);
+				jugador.setBolLamborghini(false);
+				jugador.setBolAudi(false);
+				jugador.setBolBugatti(false);
+				jugador.setBolViper(false);
+				jugador.setBolLotus(true);
+				jugador.setBolKoenis(false);
+				jugador.setBolMercedes(false);
+				JOptionPane.showMessageDialog(null, "Lotus seleccionado");
+			}
 			
 			//Koenisseg
+			else if(this.mouseOver(mx, my, 270, 250, 70, 144)) {
+				AudioPlayer.getSound("click").play();
+				//Repdroducir sonido de arranque del carro
+				
+				//Camiar la imgagen del jugador a un carro		
+				jugador.setBolFerrari(false);
+				jugador.setBolLamborghini(false);
+				jugador.setBolAudi(false);
+				jugador.setBolBugatti(false);
+				jugador.setBolViper(false);
+				jugador.setBolLotus(false);
+				jugador.setBolKoenis(true);
+				jugador.setBolMercedes(false);
+				JOptionPane.showMessageDialog(null, "Koenigsegg seleccionado");
+			}
 			
 			//Mercedes
+			else if(this.mouseOver(mx, my, 380, 250, 70, 144)) {
+				AudioPlayer.getSound("click").play();
+				//Repdroducir sonido de arranque del carro
+				
+				//Camiar la imgagen del jugador a un audi		
+				jugador.setBolFerrari(false);
+				jugador.setBolLamborghini(false);
+				jugador.setBolAudi(false);
+				jugador.setBolBugatti(false);
+				jugador.setBolViper(false);
+				jugador.setBolLotus(false);
+				jugador.setBolKoenis(false);
+				jugador.setBolMercedes(true);
+				JOptionPane.showMessageDialog(null, "Mercedes SLS seleccionado");
+			}
 			
 		}	
 	}
@@ -311,36 +420,48 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			
 			g.setFont(fnt);
 			g.setColor(Color.white);
-			g.drawString("SKINS", 180, 75);
+			g.drawString("SKINS", 180, 50);
 			
 			g.setFont(fnt3);
-			g.drawString("Escoge el carro con el que quieras correr", 65, 100);
+			g.drawString("Escoge el carro con el que quieras correr", 65, 75);
 			
 			//Escoger ferrari
-			g.drawRect(110, 115, 123, 252);
-			g.drawImage(this.ferrari, 130, 150, 88, 180, this); //Tamaño original ferrari: 35, 72 (ancho y alto)
+			g.drawRect(50, 90, 70, 144);
+			g.drawImage(this.ferrari, 55, 99, 59, 122, this); //Tamaño original ferrari: 35, 72 (ancho y alto)
 			
 			//Escoger lamborghini
-			g.drawRect(260, 115, 123, 252);
-			g.drawImage(this.lamborghini, 280, 150, 88, 180, this);
+			g.drawRect(160, 90, 70, 144);
+			g.drawImage(this.lamborghini, 165, 99, 59, 122, this);
 			
 			//Escoger Audi
+			g.drawRect(270, 90, 70, 144);
+			g.drawImage(this.audi, 277, 99, 57, 122, this);
 			
 			//Escoger Bugatti
+			g.drawRect(380, 90, 70, 144);
+			g.drawImage(this.bugatti, 385, 99, 59, 122, this);
 			
 			//Escoger Viper
+			g.drawRect(50, 250, 70, 144);
+			g.drawImage(this.viper, 55, 260, 59, 122, this);
 			
-			//Escoger
+			//Escoger Lotus
+			g.drawRect(160, 250, 70, 144);
+			g.drawImage(this.lotus, 165, 260, 59, 122, this);
 			
 			//Escoger Koenisseg
+			g.drawRect(270, 250, 70, 144);
+			g.drawImage(this.koenis, 275, 260, 59, 122, this);
 			
-			//Escoger
+			//Escoger Mercedes
+			g.drawRect(380, 250, 70, 144);
+			g.drawImage(this.mercedes, 385, 260, 59, 122, this);
 			
 			
 			//Regresar
 			g.setFont(fnt2);
-			g.drawRect(150, 400, 200, 55);
-			g.drawString("Ir al Menu", 185, 437);
+			g.drawRect(150, 410, 200, 55);
+			g.drawString("Ir al Menu", 185, 447);
 			
 		}
 		
