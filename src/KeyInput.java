@@ -21,8 +21,6 @@ public class KeyInput extends KeyAdapter{
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		
-		
-		
 		for(int i =0; i<handler.objeto.size();i++) { //tempObject es cualquier objecto en nuestro juego
 			GameObject tempObject = handler.objeto.get(i);
 			
@@ -45,15 +43,6 @@ public class KeyInput extends KeyAdapter{
 		if(key == KeyEvent.VK_ESCAPE) {
 			//salir del juego al presionar tecla escape
 			System.exit(1);
-		}
-		
-		
-		if (Juego.estadoJuego == Juego.ESTADO.GameOver){
-			this.keyDown[0] =  false;
-			this.keyDown[1] =  false;
-			this.keyDown[2] =  false;
-			this.keyDown[3] =  false;
-			this.keyDown[4] =  false;				
 		} 
 	}
 	
@@ -81,17 +70,6 @@ public class KeyInput extends KeyAdapter{
 					tempObject.setVelX(0);
 				} 
 			}
-		}
-		
-		
-		
-	}
-	
-	public void inicio() {
-		this.keyDown[0] =  false;
-		this.keyDown[1] =  false;
-		this.keyDown[2] =  false;
-		this.keyDown[3] =  false;
-		this.keyDown[4] =  false;
+		}	
 	}
 }

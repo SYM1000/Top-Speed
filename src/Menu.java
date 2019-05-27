@@ -23,20 +23,16 @@ public class Menu extends MouseAdapter implements ImageObserver {
 	public Handler handler;
 	private HUD hud;
 	private Jugador jugador;
-	private KeyInput KeyInput;
 	private Image logo, teclas, ferrari, lamborghini;
 	
 	private moverLinea mvs;
 	private ThreadLocalRandom randomNum;
 
-	public Menu(Juego juego, Handler handler, HUD hud, Jugador jugador, KeyInput keyInput) {
+	public Menu(Juego juego, Handler handler, HUD hud, Jugador jugador) {
 		this.juego = juego;
 		this.handler = handler;
 		this.hud = hud;
 		this.jugador = jugador;
-		this.KeyInput = keyInput;
-		//this.player = new Jugador(Juego.ANCHO/2, Juego.ALTO - 120, ID.Jugador, handler);
-		//this.player = jugador;
 		this.logo = new ImageIcon("logo.png").getImage();
 		this.teclas =  new ImageIcon("teclas.png").getImage();
 		this.ferrari =  new ImageIcon("ferrari_carro-removebg.png").getImage();
@@ -63,19 +59,13 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				
 				//handler.addObject(new Linea(Juego.ANCHO/2 - 19, -400 , ID.Linea, handler)); //Agregar una linea para debuggear
 				
-				//Agregar el jugador y unos enemigos al inico del juego
-				
-				//*******
-				
+				//Agregar el jugador y unos enemigos al inico del juego	
 				//Añadir el jugador en lo misma posicion siempre y no en movimiento
 				jugador.x = Juego.ANCHO/2 - 40;
 				jugador.y = Juego.ALTO - 120;
 				jugador.velX = 0;
 				jugador.velY = 0;
 				handler.addObject(jugador);	
-				
-				//KeyInput.inicio();
-				//********
 				
 				//handler.addObject(new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario
 				handler.addObject(new SlowCar(Juego.ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
@@ -160,7 +150,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			
 			/*
 			 ********************
-			//AGREGAR LOS SONIDOS
+			//SELECCIONAR EL AUTO
 			 * ******************
 			*/
 			
@@ -170,27 +160,32 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				//Repdroducir sonido de motor de ferrari
 				AudioPlayer.getSound("arrancar").play();
 				//Camiar la imgagen del jugador a un ferrari
-				//jugador.carro = Juego.imagen_ferrari;
-				//handler.removeObject(jugador);
 				jugador.setBolFerrari(true);
 				jugador.setBolLamborghini(false);
 				JOptionPane.showMessageDialog(null, "Ferrari seleccionado");
-				
-				
 				
 			//Lamborghini
 			}else if(this.mouseOver(mx, my, 260, 115, 123, 252)) {
 				AudioPlayer.getSound("click").play();
 				//Repdroducir sonido de motor de Lamborghini
-				//---------
-				//Camiar la imgagen del jugador a un lamborghini
-					
+				AudioPlayer.getSound("startLamborghini").play();
+				//Camiar la imgagen del jugador a un lamborghini		
 				jugador.setBolFerrari(false);
 				jugador.setBolLamborghini(true);
-				JOptionPane.showMessageDialog(null, "Lamborghini seleccionado");
-				
-				
+				JOptionPane.showMessageDialog(null, "Lamborghini seleccionado");	
 			}
+			
+			//Audi
+			
+			//Buggatti
+			
+			//Viper
+			
+			//Lotus
+			
+			//Koenisseg
+			
+			//Mercedes
 			
 		}	
 	}
@@ -327,7 +322,20 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			
 			//Escoger lamborghini
 			g.drawRect(260, 115, 123, 252);
-			g.drawImage(this.lamborghini, 280, 150, 88, 180, this);	
+			g.drawImage(this.lamborghini, 280, 150, 88, 180, this);
+			
+			//Escoger Audi
+			
+			//Escoger Bugatti
+			
+			//Escoger Viper
+			
+			//Escoger
+			
+			//Escoger Koenisseg
+			
+			//Escoger
+			
 			
 			//Regresar
 			g.setFont(fnt2);

@@ -27,8 +27,18 @@ public class AudioPlayer{
 			soundMap.put("arrancar", new Sound("MotorArrancar.wav"));
 			soundMap.put("claxon", new Sound("claxon.wav"));
 			soundMap.put("gameover", new Sound("gameover.wav"));
-			//Agregar sonido del arranque del motor del ferrari y lambo al ser seleccionados
-			//Agregar sonido del motoro mientras se está avanzando
+			
+			soundMap.put("audiStart", new Sound("audiStart.wav"));
+			soundMap.put("startLambo", new Sound("lamboStart.wav"));
+			/*Cargar sonido audi
+			 * 				Bugatti
+			 * 				Viper
+			 * 				Lotus
+			 * 				Koenisseg
+			 * 				Mercedes			
+			*/
+		
+			//Agregar sonido del motor mientras se está avanzando
 			
 			
 			//Agregar la musica

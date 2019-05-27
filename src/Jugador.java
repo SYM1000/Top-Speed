@@ -98,12 +98,14 @@ public class Jugador extends GameObject implements ImageObserver{
 		
 		if(this.bol_ferrari == true && this.bol_lamborghini == false) {
 			this.carro = Juego.imagen_ferrari;
-			//g.drawImage(this.carro, (int)x, (int)y, this.ancho, this.alto, this);
+			
 		}else if (this.bol_ferrari == false && this.bol_lamborghini == true) {
 			this.carro = Juego.imagen_lamborghini;
+			
 		}else if(this.bol_ferrari == false && this.bol_lamborghini == false) {
 			this.carro = Juego.imagen_ferrari;
-		}
+			
+		}//AGREGAR MAS CONDICIONALES
 		
 		g.drawImage(this.carro, (int)x, (int)y, this.ancho, this.alto, this);	
 		}
