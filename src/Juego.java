@@ -26,6 +26,7 @@ public class Juego extends Canvas implements Runnable{
 	private boolean corriendo = false;
 	private Handler handler;
 	private HUD hud;
+	private KeyInput keyInput;
 	private Image calle;
 	private Spawn spawner;	
 	private Menu menu;
@@ -48,6 +49,7 @@ public class Juego extends Canvas implements Runnable{
 	
 	public static BufferedImage imagen_ferrari;
 	public static BufferedImage imagen_lamborghini;
+	//Aqui podemos agregar mas imagenes para los carros
 	
 	public Juego() {
 		//Cambiar de sprites
@@ -59,9 +61,9 @@ public class Juego extends Canvas implements Runnable{
 		this.hud = new HUD();
 		
 		
-		jugador = new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler);
+		this.jugador = new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler);
 		
-		this.menu = new Menu(this, handler, hud, jugador);
+		this.menu = new Menu(this, handler, hud, jugador, keyInput);
 		this.addKeyListener(new KeyInput(handler));
 		this.addMouseListener(menu);
 		new Ventana(ANCHO, ALTO, "Top Speed", this);
@@ -116,7 +118,7 @@ public class Juego extends Canvas implements Runnable{
                             
         	if(System.currentTimeMillis() - timer > 1000){
         		timer += 1000;
-        		System.out.println("FPS: "+ frames);
+        		//System.out.println("FPS: "+ frames);
         		frames = 0;
         	}
         }
@@ -134,7 +136,11 @@ public class Juego extends Canvas implements Runnable{
 			if(this.hud.SALUD <= 0) {
 				this.hud.SALUD = 100;
 				this.estadoJuego = ESTADO.GameOver;
-				handler.clearCars();	
+				
+				handler.clearCars();
+				handler.limpiarCarro();
+				handler.removeObject(this.jugador);
+				
 				AudioPlayer.getSound("gameover").play();												
 			}
 			

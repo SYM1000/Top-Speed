@@ -42,9 +42,25 @@ public class Handler {
 				objeto.clear();
 				if(Juego.estadoJuego != Juego.ESTADO.GameOver)
 				addObject(new Jugador((int)tempObject.getVelX(), (int)tempObject.getY(), ID.Jugador, this));
+				//System.out.println("Estamos en reparación");
 			}
 		}
 	}
+	
+	
+	public void limpiarCarro() {
+		for(int i = 0; i < objeto.size(); i++ ) {
+			GameObject tempObject = objeto.get(i);
+			
+			if(tempObject.getId() == ID.Jugador) {
+				objeto.clear();
+				System.out.println("Jugador eliminado");
+			}
+
+				
+		}
+	}
+	
 	
 	//Añadir objetos al juego 
 	public void addObject(GameObject objeto) {

@@ -21,6 +21,8 @@ public class KeyInput extends KeyAdapter{
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		
+		
+		
 		for(int i =0; i<handler.objeto.size();i++) { //tempObject es cualquier objecto en nuestro juego
 			GameObject tempObject = handler.objeto.get(i);
 			
@@ -44,6 +46,15 @@ public class KeyInput extends KeyAdapter{
 			//salir del juego al presionar tecla escape
 			System.exit(1);
 		}
+		
+		
+		if (Juego.estadoJuego == Juego.ESTADO.GameOver){
+			this.keyDown[0] =  false;
+			this.keyDown[1] =  false;
+			this.keyDown[2] =  false;
+			this.keyDown[3] =  false;
+			this.keyDown[4] =  false;				
+		} 
 	}
 	
 	public void keyReleased(KeyEvent e) {
@@ -55,11 +66,11 @@ public class KeyInput extends KeyAdapter{
 			if(tempObject.getId() == ID.Jugador) {
 				//Eventos del Teclado para el usuario
 				
-				if(key == KeyEvent.VK_W) {this.keyDown[0] =  false;}
+				if(key == KeyEvent.VK_W) this.keyDown[0] =  false;
 				if(key == KeyEvent.VK_S) this.keyDown[1] =  false;
 				if(key == KeyEvent.VK_D) this.keyDown[2] =  false;
 				if(key == KeyEvent.VK_A) this.keyDown[3] =  false;
-				if(key == KeyEvent.VK_SPACE) {this.keyDown[4] =  false;}
+				if(key == KeyEvent.VK_SPACE) this.keyDown[4] =  false;
 				
 				//Movimiento vertical
 				if(!keyDown[0] && !keyDown[1]) {
@@ -71,5 +82,16 @@ public class KeyInput extends KeyAdapter{
 				} 
 			}
 		}
+		
+		
+		
+	}
+	
+	public void inicio() {
+		this.keyDown[0] =  false;
+		this.keyDown[1] =  false;
+		this.keyDown[2] =  false;
+		this.keyDown[3] =  false;
+		this.keyDown[4] =  false;
 	}
 }

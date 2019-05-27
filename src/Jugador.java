@@ -35,19 +35,26 @@ public class Jugador extends GameObject implements ImageObserver{
 		this.ancho = 35;
 		this.alto = 72;
 		this.handler = handler;
-		this.bol_ferrari = true;
+		this.bol_ferrari = false;
 		this.bol_lamborghini = false;
 		//this.carro = Juego.imagen_ferrari;
 		
 	}
 
-	public static void setBolFerrari(boolean valor) {
-		//this.bol_ferrari = valor;
-		System.out.println("valor");
+	public void setBolFerrari(boolean valor) {
+		this.bol_ferrari = valor;
 	}
 	
 	public void setBolLamborghini(boolean valor) {
 		this.bol_lamborghini = valor;
+	}
+	
+	public boolean getBolFerrari() {
+		return this.bol_ferrari;
+	}
+	
+	public boolean getBolLamborghini() {
+		return this.bol_lamborghini;
 	}
 
 	public Rectangle getBounds(){
@@ -94,6 +101,8 @@ public class Jugador extends GameObject implements ImageObserver{
 			//g.drawImage(this.carro, (int)x, (int)y, this.ancho, this.alto, this);
 		}else if (this.bol_ferrari == false && this.bol_lamborghini == true) {
 			this.carro = Juego.imagen_lamborghini;
+		}else if(this.bol_ferrari == false && this.bol_lamborghini == false) {
+			this.carro = Juego.imagen_ferrari;
 		}
 		
 		g.drawImage(this.carro, (int)x, (int)y, this.ancho, this.alto, this);	

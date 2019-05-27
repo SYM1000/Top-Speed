@@ -23,19 +23,20 @@ public class Menu extends MouseAdapter implements ImageObserver {
 	public Handler handler;
 	private HUD hud;
 	private Jugador jugador;
-	private Jugador player;
+	private KeyInput KeyInput;
 	private Image logo, teclas, ferrari, lamborghini;
 	
 	private moverLinea mvs;
 	private ThreadLocalRandom randomNum;
 
-	public Menu(Juego juego, Handler handler, HUD hud, Jugador jugador) {
+	public Menu(Juego juego, Handler handler, HUD hud, Jugador jugador, KeyInput keyInput) {
 		this.juego = juego;
 		this.handler = handler;
 		this.hud = hud;
 		this.jugador = jugador;
-		this.player = new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler);
-		this.player = jugador;
+		this.KeyInput = keyInput;
+		//this.player = new Jugador(Juego.ANCHO/2, Juego.ALTO - 120, ID.Jugador, handler);
+		//this.player = jugador;
 		this.logo = new ImageIcon("logo.png").getImage();
 		this.teclas =  new ImageIcon("teclas.png").getImage();
 		this.ferrari =  new ImageIcon("ferrari_carro-removebg.png").getImage();
@@ -64,8 +65,19 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				
 				//Agregar el jugador y unos enemigos al inico del juego
 				
-				//handler.addObject(new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario
+				//*******
 				
+				//Añadir el jugador en lo misma posicion siempre y no en movimiento
+				jugador.x = Juego.ANCHO/2 - 40;
+				jugador.y = Juego.ALTO - 120;
+				jugador.velX = 0;
+				jugador.velY = 0;
+				handler.addObject(jugador);	
+				
+				//KeyInput.inicio();
+				//********
+				
+				//handler.addObject(new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario
 				handler.addObject(new SlowCar(Juego.ANCHO/2 - 40, 0 + 50, ID.SlowCar, handler));
 				handler.addObject(new SlowCar(this.randomNum.nextInt(120, ((Juego.ANCHO - 140) -38) + 1), -100, ID.SlowCar, handler));
 				
@@ -131,7 +143,10 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		//Regresar al menu
 		if(juego.estadoJuego == Juego.ESTADO.GameOver) {
 			//Detener clase con hilo
-			//this.mvs.detener();		
+			//this.mvs.detener();
+			handler.removeObject(jugador);
+			handler.clearCars();
+			System.out.println("se ha elimado el jugador");
 			if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
 				AudioPlayer.getSound("click").play();
 				juego.estadoJuego = Juego.ESTADO.Menu;
@@ -143,14 +158,20 @@ public class Menu extends MouseAdapter implements ImageObserver {
 		//En prubas y mejoras continuas. No está terminado
 		if(juego.estadoJuego == Juego.ESTADO.Skins) {
 			
+			/*
+			 ********************
+			//AGREGAR LOS SONIDOS
+			 * ******************
+			*/
 			
 			//Ferrari
 			if(this.mouseOver(mx, my, 110, 115, 123, 252)) {
 				AudioPlayer.getSound("click").play();
 				//Repdroducir sonido de motor de ferrari
-				//---------
+				AudioPlayer.getSound("arrancar").play();
 				//Camiar la imgagen del jugador a un ferrari
 				//jugador.carro = Juego.imagen_ferrari;
+				//handler.removeObject(jugador);
 				jugador.setBolFerrari(true);
 				jugador.setBolLamborghini(false);
 				JOptionPane.showMessageDialog(null, "Ferrari seleccionado");
@@ -163,7 +184,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				//Repdroducir sonido de motor de Lamborghini
 				//---------
 				//Camiar la imgagen del jugador a un lamborghini
-				handler.addObject(new Jugador(Juego.ANCHO/2 - 40, Juego.ALTO - 120, ID.Jugador, handler)); //Jugador o Usuario	
+					
 				jugador.setBolFerrari(false);
 				jugador.setBolLamborghini(true);
 				JOptionPane.showMessageDialog(null, "Lamborghini seleccionado");
