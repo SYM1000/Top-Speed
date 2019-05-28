@@ -15,6 +15,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+import org.newdawn.slick.openal.Audio;
+
 
 //Clase para crear el menu del juego
 public class Menu extends MouseAdapter implements ImageObserver {
@@ -60,8 +62,28 @@ public class Menu extends MouseAdapter implements ImageObserver {
 				//Aquí inicia el juego
 				juego.estadoJuego = Juego.ESTADO.Juego;
 				//mvs.setCorrer(true);
+				
 				AudioPlayer.getSound("click").play();
-				AudioPlayer.getSound("arrancar").play();
+				
+				if(jugador.getBolFerrari() == false && jugador.getBolLamborghini() == false && jugador.getBolAudi() == false && jugador.getBolBugatti() == false && jugador.getBolViper() == false && jugador.getBolLotus() == false && jugador.getBolKoenis() == false && jugador.getBolMercedes() == false) {
+					AudioPlayer.getSound("arrancar").play();
+				}else if(jugador.getBolFerrari() == true) {
+					AudioPlayer.getSound("arrancar").play();
+				}else if(jugador.getBolLamborghini() == true) {
+					AudioPlayer.getSound("lamboStart").play();
+				}else if(jugador.getBolAudi() == true) {
+					AudioPlayer.getSound("audiStart").play();
+				}else if(jugador.getBolBugatti() == true) {
+					AudioPlayer.getSound("bugattiStart").play();
+				}else if(jugador.getBolViper() == true) {
+					AudioPlayer.getSound("viperStart").play();
+				}else if(jugador.getBolLotus() == true) {
+					AudioPlayer.getSound("lotusStart").play();
+				}else if(jugador.getBolKoenis() == true) {
+					AudioPlayer.getSound("koenisStart").play();
+				}else if(jugador.getBolMercedes() == true) {
+					AudioPlayer.getSound("mercedesStart").play();
+				}
 				
 				//handler.addObject(new Linea(Juego.ANCHO/2 - 19, -400 , ID.Linea, handler)); //Agregar una linea para debuggear
 				
@@ -142,7 +164,7 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			//this.mvs.detener();
 			handler.removeObject(jugador);
 			handler.clearCars();
-			System.out.println("se ha elimado el jugador");
+			//se ha elimado el jugador
 			if(this.mouseOver(mx, my, 150, 400, 200, 55)) {
 				AudioPlayer.getSound("click").play();
 				juego.estadoJuego = Juego.ESTADO.Menu;

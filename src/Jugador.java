@@ -92,6 +92,30 @@ public class Jugador extends GameObject implements ImageObserver{
 	public boolean getBolLamborghini() {
 		return this.bol_lamborghini;
 	}
+	
+	public boolean getBolAudi() {
+		return this.bol_audi;
+	}
+	
+	public boolean getBolBugatti() {
+		return this.bol_bugatti;
+	}
+	
+	public boolean getBolViper() {
+		return this.bol_viper;
+	}
+	
+	public boolean getBolLotus() {
+		return this.bol_lotus;
+	}
+	
+	public boolean getBolKoenis() {
+		return this.bol_koenis;
+	}
+	
+	public boolean getBolMercedes() {
+		return this.bol_mercedes;
+	}
 
 	public Rectangle getBounds(){
 		return new Rectangle((int)x,(int)y,this.ancho,this.alto);
