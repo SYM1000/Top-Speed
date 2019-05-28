@@ -104,17 +104,14 @@ public class Menu extends MouseAdapter implements ImageObserver {
 			//Boton: AYUDA
 			if(this.mouseOver(mx, my, 150, 250, 200, 55)){
 				juego.estadoJuego = Juego.ESTADO.Ayuda;
-				AudioPlayer.getSound("click").play();
-				
-				
+				AudioPlayer.getSound("click").play();		
 			}
 			
 			
 			//Boton: CRÉDITOS
 			if(this.mouseOver(mx, my, 150, 325, 200, 55)){
 				juego.estadoJuego = Juego.ESTADO.Creditos;
-				AudioPlayer.getSound("click").play();
-				
+				AudioPlayer.getSound("click").play();				
 			}
 			
 			//Boton: SALIR
