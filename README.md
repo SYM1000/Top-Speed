@@ -13,6 +13,9 @@ Try Your Best and Have Fun!
 
 ![](img_rdMe/menu.png)
 
+CHOOSE YOUR FAVORITE CAR
+![](img_rdMe/skins.png)
+
 ![](img_rdMe/game.png)
 
 

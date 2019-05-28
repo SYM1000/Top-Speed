@@ -30,7 +30,6 @@ public class HUD {
 		this.valorVerde = (int) Juego.clamp(this.valorVerde, 0, 255);	
 		this.valorVerde = (int) (this.SALUD * 2);
 		
-		
 		this.distancia ++;
 	}
 	
