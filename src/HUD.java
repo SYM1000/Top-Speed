@@ -51,7 +51,7 @@ public class HUD {
 		
 		g.setFont(fnt3);
 		g.setColor(Color.white);
-		g.drawString("FPS: " + this.FPS, 5, 20);
+		g.drawString("FPS: " + this.FPS, 10, 20);
 	}
 	
 	public void setFPS(int fps) {
