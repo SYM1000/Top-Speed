@@ -35,7 +35,7 @@ public class HUD {
 	
 	public void render(Graphics g) {
 		Font fnt2 = new Font("arial", 1,20);
-		Font fnt3 = new Font("arial", 1,12);
+		Font fnt3 = new Font("arial", 1,14);
 		
 		g.setColor(Color.white);
 		g.fillRect(Juego.ANCHO - 215,15, 200, 32);
