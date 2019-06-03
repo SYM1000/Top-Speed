@@ -44,7 +44,6 @@ public class HUD {
 		g.setColor(Color.black);
 		g.drawRect(Juego.ANCHO - 215,15, 200, 32);
 		
-		
 		g.setFont(fnt2);
 		g.setColor(Color.white);
 		g.drawString("Distancia: ", Juego.ANCHO - 130, 70);
