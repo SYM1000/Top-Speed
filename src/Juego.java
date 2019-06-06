@@ -211,7 +211,4 @@ public class Juego extends Canvas implements Runnable{
 	public static void main(String[] args) {
 		new Juego();
 	}
-
-	
-
 }
