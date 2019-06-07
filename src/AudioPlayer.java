@@ -35,17 +35,13 @@ public class AudioPlayer{
 			soundMap.put("koenisStart", new Sound("koenisStart.wav"));
 			soundMap.put("mercedesStart", new Sound("mercedesStart.wav"));
 			
-			/*Cargar sonido
-			 * 				Koenisseg
-			 * 				Mercedes			
-			*/
-		
 			//Agregar sonido del motor mientras se está avanzando
 			
 			
 			//Agregar la musica
 			musicMap.put("music", new Music("intro.wav"));
 			//Posiblemente agregar musica extra
+			
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
