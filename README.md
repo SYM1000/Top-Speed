@@ -11,6 +11,8 @@ Try Your Best and Have Fun!
 
 ![](img_rdMe/logo.png)
 
+![Alt Text](https://github.com/SYM1000/Top-Speed/blob/master/TopSpeed.gif "Check it Out!")
+
 ![](img_rdMe/menu.png)
 
 CHOOSE YOUR FAVORITE CAR
