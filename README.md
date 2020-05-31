@@ -1,4 +1,4 @@
-# Top Speed
+# Top Speed 🏎
 A simple game created using JAVA
 
 The objective of this game is to travel the longest distance, while dodging enemys
@@ -24,3 +24,11 @@ CHOOSE YOUR FAVORITE CAR
 
 # Thank You :)
 IT´S NOT A BUG, IT´S A FEATURE.
+
+## Regards 🎈
+With ❤️ from 🇲🇽 by **Santiago Yeomans**
+
+### Follow Me 👇
+* [LinkedIn](https://www.linkedin.com/in/santiago-yeomans/) - Follow me on LinkedIn!
+* [GitHub](https://github.com/SYM1000) - Follow me on GitHub!
+* [WebPage](www.santiagoyeomans.com) - Check out my web page!
